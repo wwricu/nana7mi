@@ -1,0 +1,62 @@
+.leftIn {
+    animation: leftIn 1s ease;
+}
+.leftOut {
+    animation: leftOut 1s ease;
+    animation-fill-mode: forwards;
+}
+.rightIn {
+    animation: rightIn 1s ease;
+}
+.rightOut {
+    animation: rightOut 1s ease;
+    animation-fill-mode: forwards;
+}
+.leftIn {
+    animation: leftIn 1s ease;
+}
+.leftOut {
+    animation: leftOut 1s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes leftIn {
+    from {
+        transform: translateX(-250%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-120%);
+        opacity: 1;
+    }
+}
+@keyframes leftOut {
+    from {
+        transform: translateX(-120%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-250%);
+        opacity: 0;
+    }
+}
+@keyframes rightIn {
+    from {
+        transform: translateX(250%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(120%);
+        opacity: 1;
+    }
+}
+@keyframes rightOut {
+    from {
+        transform: translateX(120%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(250%);
+        opacity: 0;
+    }
+}

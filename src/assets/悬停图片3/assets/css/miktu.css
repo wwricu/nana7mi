@@ -1,0 +1,823 @@
+/*-------------------------------------
+Template Name: Miktu img hover
+更多精品前端代码请访问：http://www.bootstrapmb.com
+Description: Miktu hover Modern & Responsive Bootstrap 4 Forms is a simple and unique style for Iamge hover built with Bootstrap framework. 
+Author: webtend
+Version: 1.0
+------------------------------------
+CSS index:-
+
+1.Default css
+2.Hover_1
+3.Hover_2
+4.Hover_3
+5.THover_4
+6.Hover_5
+7.Hover_6
+8.Hover_7
+9.Hover_8
+10.Hover_9
+11.Hover_10
+12.Munfooter css
+13.Responsive css
+------------------------------------*/
+
+/* 1. Strat Default css*/
+.miktu_title{
+	margin-bottom: 95px;
+}
+.miktu_title h1{
+	font-size: 60px;
+	font-weight: 700;
+}
+.hover_area{
+	margin-bottom: 30px;
+}
+.hover_area_1,
+.hover_area_2,
+.hover_area_3,
+.hover_area_4,
+.hover_area_5,
+.hover_area_6,
+.hover_area_7,
+.hover_area_8,,
+.hover_area_9,
+.hover_area_10,
+.hover_area_11,
+.hover_area_12,
+.hover_img_13,
+.hover_img_14{
+	overflow: hidden;
+	position: relative;
+}
+.hover_img_1,
+.hover_img_2,
+.hover_img_3,
+.hover_img_4,
+.hover_img_5,
+.hover_img_6,
+.hover_img_7,
+.hover_img_8,
+.hover_img_9,
+.hover_img_10,
+.hover_img_11,
+.hover_img_12,
+.hover_img_13,
+.hover_img_14{
+	overflow: hidden;
+	position: relative;
+}
+.hover_img_1 img,
+.hover_img_2 img,
+.hover_img_3 img,
+.hover_img_4 img,
+.hover_img_5 img,
+.hover_img_6 img,
+.hover_img_7 img,
+.hover_img_8 img,
+.hover_img_9 img,
+.hover_img_10 img,
+.hover_img_11 img,
+.hover_img_12 img,
+.hover_img_13 img,
+.hover_img_14 img{
+	width: 100%;
+	height: 100%;
+}
+/* End Default css*/
+
+/*
+	2. Start Hover style css 1
+*/
+.hover_img_1 img{
+	transition: all .5s;
+}
+.hover_area_1:hover .hover_img_1 img{
+	transform: translateY(-200px);
+}
+.hover_area_1:hover .hover_overlay_1{
+	transform: translateY(0px);
+	opacity: 1;
+}
+.hover_area_1:hover .hover_content_1{
+	opacity: 1;
+}
+.hover_overlay_1{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background: #0cad44;
+	transform: translateY(-200px);
+	transition: all .5s;
+}
+.hover_content_1{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	opacity: 0;
+	transition: all .5s;
+}
+.hover_content_1 h4{
+	color: #fff;
+}
+.hover_content_1 ul {
+	margin-top: 20px;
+}
+.hover_content_1 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_1 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #0cad44;
+	font-size: 14px;
+}
+/*
+	End Hover style css 1
+*/
+
+/*
+	3. Start hover style 2
+*/
+.hover_img_2{
+	-webkit-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	-ms-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	-o-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+	transition: all .5s;
+}
+.hover_area_2:hover .hover_img_2{
+	-webkit-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(-30deg);
+	-ms-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(-30deg);
+	-o-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(-30deg);
+	transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(-30deg);
+	transform-style: preserve-3d;
+}
+.hover_area_2:hover .hover_overlay_2{
+	opacity: .8;
+	visibility: visible;
+}
+.hover_area_2:hover .hover_content_2{
+	opacity: 1;
+}
+.hover_overlay_2{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	opacity: 0;
+	background: #6706a8;
+	transition: all .5s;
+}
+.hover_content_2{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	opacity: 0;
+	transition: all .5s;
+}
+.hover_content_2 ul {
+	margin-top: 20px;
+}
+.hover_content_2 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_2 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #6706a8;
+	font-size: 14px;
+}
+/*
+	End Hover style css 2
+*/
+
+/*
+	4. Start hover style 3
+*/
+.hover_img_3{
+	-webkit-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	-ms-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	-o-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+	transition: all .5s;
+}
+.hover_area_3:hover .hover_img_3{
+	-webkit-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(20deg) rotateY(0deg);
+	-ms-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(20deg) rotateY(0deg);
+	-o-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(20deg) rotateY(0deg);
+	transform: perspective(900px) translate3d(0, 0px, 0) rotateX(20deg) rotateY(0deg);
+	transform-style: preserve-3d;
+}
+.hover_area_3:hover .hover_overlay_3{
+	opacity: .8;
+	visibility: visible;
+}
+.hover_area_3:hover .hover_content_3{
+	opacity: 1;
+}
+.hover_overlay_3{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	opacity: 0;
+	background: #ce1427;
+	transition: all .5s;
+}
+.hover_content_3{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	opacity: 0;
+	transition: all .5s;
+}
+.hover_content_3 ul {
+	margin-top: 20px;
+}
+.hover_content_3 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_3 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #ce1427;
+	font-size: 14px;
+}
+/*
+	End hover style 3
+*/
+/*
+	5. Start Hover style css 4
+*/
+.hover_img_4 img{
+	transform: scale(1);
+	transition: all .5s;
+}
+.hover_area_4:hover .hover_img_4 img{
+	transform: scale(1.5);
+}
+.hover_area_4:hover .hover_overlay_4{
+	visibility: visible;
+	transform: translateX(0);
+}
+.hover_area_4:hover .hover_content_4{
+	opacity: 1;
+}
+.hover_overlay_4{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	height: calc(100% - 20px);
+	width: calc(100% - 20px);
+	background: #efcb15;
+	visibility: hidden;
+	transform: translateX(-100%);
+	transition: all .3s;
+}
+.hover_content_4{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	opacity: 0;
+	transition: all .5s;
+}
+.hover_content_4 ul {
+	margin-top: 20px;
+}
+.hover_content_4 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_4 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #efcb15;
+	font-size: 14px;
+}
+/*
+	End Hover style css 4
+*/
+
+/*
+	6. Start Hover style css 5
+*/
+.hover_img_5 img{
+	transform: scale(1);
+	transition: all .5s;
+}
+.hover_area_5:hover .hover_img_5 img{
+	transform: scale(1.3);
+}
+.hover_area_5:hover .hover_content_5{
+	visibility: visible;
+	opacity: 1;
+}
+.hover_area_5:hover .hover_overlay_5{
+	-webkit-transform: perspective(900px) rotateX(0deg);
+	-ms-transform: perspective(900px) rotateX(0deg);
+	-o-transform: perspective(900px) rotateX(0deg);
+	transform: perspective(900px) rotateX(0deg);
+	transform-style: preserve-3d;
+	visibility: visible;
+	opacity: .8;
+}
+.hover_overlay_5{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	visibility: hidden;
+	background: #1485ef;
+	-webkit-transform: perspective(500px) rotateX(90deg);
+	-ms-transform: perspective(500px) rotateX(90deg);
+	-o-transform: perspective(500px) rotateX(90deg);
+	transform: perspective(500px) rotateX(90deg);
+    transform-style: preserve-3d;
+	transition: all .7s;
+}
+.hover_content_5{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .7s;
+}
+.hover_content_5  h4{
+	color: #fff;
+}
+.hover_content_5 ul {
+	margin-top:20px;
+}
+.hover_content_5 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_5 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #1485ef;
+	font-size: 14px;
+}
+/*
+	End Hover style css 5
+*/
+/*
+	7. Start hover style csss 6
+*/
+.hover_img_6 img{
+	transform: scale(1);
+	transition: all .5s;
+}
+.hover_area_6:hover .hover_img_6 img{
+	transform: scale(1.3);
+}
+.hover_area_6:hover .hover_overlay_6{
+	width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    top: 10px;
+    left: 10px;
+    opacity: .8;
+    visibility: visible;
+}
+.hover_area_6:hover .hover_content_6{
+	visibility: visible;
+	opacity: 1;
+}
+.hover_overlay_6{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	visibility: hidden;
+	background: #150d51;
+	transition: all .3s;
+}
+.hover_content_6{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	opacity: 0;
+	visibility: hidden;
+	text-align: center;
+	transition: all .5s;
+}
+.hover_content_6 ul {
+	margin-top: 20px;
+}
+.hover_content_6 h4{
+	color: #fff;
+}
+.hover_content_6 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_6 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #150d51;
+	font-size: 14px;
+}
+/*
+	End hover style 6
+*/
+
+/*
+	8. Start hover style 7
+*/
+.hover_img_7{
+	-webkit-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	-ms-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	-o-transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+	transform: perspective(500px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+	transition: all .5s;
+}
+.hover_area_7:hover .hover_img_7{
+	-webkit-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(30deg);
+	-ms-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(30deg);
+	-o-transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(30deg);
+	transform: perspective(900px) translate3d(0, 0px, 0) rotateX(0deg) rotateY(30deg);
+	transform-style: preserve-3d;
+}
+.hover_area_7:hover .hover_overlay_7{
+	opacity: .8;
+	visibility: visible;
+}
+.hover_area_7:hover .hover_content_7{
+	opacity: 1;
+}
+.hover_overlay_7{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	visibility: hidden;
+	background: #6b1089;
+	transition: all .3s;
+}
+.hover_content_7{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	opacity: 0;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	transition: all .5s;
+}
+.hover_content_7 h4{
+	color: #fff;
+}
+.hover_content_7 ul {
+	margin-top: 20px;
+}
+.hover_content_7 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_7 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #6b1089;
+	font-size: 14px;
+}
+/*
+	End hover style 7
+*/
+
+/*
+	9. Start hover style 8
+*/
+.hover_img_8 img{
+	transform: scale(1);
+	transition: all .5s;
+}
+.hover_area_8:hover .hover_img_8 img{
+	transform: scale(1.3);
+}
+.hover_area_8:hover .hover_overlay_8{
+	opacity: .8;
+    visibility: visible;
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    -o-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+}
+.hover_area_8:hover .hover_content_8{
+	opacity: 1;
+	visibility: visible;
+}
+.hover_overlay_8{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0px;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    background: #f20909;
+    -webkit-transition: all .5s ease .1s;
+    -o-transition: all .5s ease .1s;
+    transition: all .5s ease .1s;
+    -webkit-transform: scale3d(0, 1, 0);
+    -ms-transform: scale3d(0, 1, 0);
+    -o-transform: scale3d(0, 1, 0);
+    transform: scale3d(0, 1, 0);
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+}
+.hover_content_8{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .5s;
+}
+.hover_content_8 h4{
+	color: #fff;
+}
+.hover_content_8 ul {
+	margin-top: 20px;
+}
+.hover_content_8 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_8 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #f20909;
+	font-size: 14px;
+}
+/*
+	End hover style 8
+*/
+
+/*
+	10. Start hover style 9
+*/
+.hover_img_9 img{
+	transform: scale(1);
+	transition: all .5s;
+}
+.hover_area_9:hover .hover_img_9 img{
+	transform: scale(1.3);
+}
+.hover_area_9:hover .hover_content_9{
+	opacity: 1;
+	visibility: visible;
+}
+.hover_area_9:hover .hover_overlay_9{
+	opacity: .8;
+	visibility: visible;
+}
+.hover_overlay_9{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	visibility: hidden;
+	background: #38e27c;
+	transition: all .3s;
+}
+.hover_content_9{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	opacity: 0;
+	visibility: hidden;
+	text-align: center;
+	transition: all .5s;
+}
+.hover_content_9 ul {
+	margin-top: 20px;
+}
+.hover_content_9 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_9 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #38e27c;
+	font-size: 14px;
+}
+/*
+	End hover style 9 css
+*/
+
+/*
+	11. Start hover style 10 css
+*/
+.hover_img_10 img{
+	transform: scale(1);
+	transition: all .5s;
+}
+.hover_area_10:hover .hover_img_10 img{
+	transform: scale(1.5);
+}
+.hover_area_10:hover .hover_overlay_10{
+	-webkit-transform: perspective(800px) rotateY(60deg);
+    -moz-transform: perspective(800px) rotateY(0deg);
+    -ms-transform: perspective(800px) rotateY(0deg);
+    -o-transform: perspective(800px) rotateY(0deg);
+    transform: perspective(800px) rotateY(0deg);
+    transform-style: preserve-3d;
+	visibility: visible;
+	opacity: .8;
+	transition: all .5s;
+}
+.hover_area_10:hover .hover_content_10{
+	opacity: 1;
+}
+.hover_overlay_10{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	background: #d1068d;
+	-webkit-transform-origin: 0 50%;
+	-moz-transform-origin: 0 50%;
+	-ms-transform-origin: 0 50%;
+	-o-transform-origin: 0 50%;
+	transform-origin: 0 50%;
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    -moz-transform: perspective(600px) rotateY(60deg);
+    -ms-transform: perspective(600px) rotateY(60deg);
+    -o-transform: perspective(600px) rotateY(60deg);
+    transform: perspective(600px) rotateY(60deg);
+    transform-style: preserve-3d;
+    opacity: 0;
+	transition: all .5s;
+}
+.hover_content_10{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	opacity: 0;
+	text-align: center;
+	transition: all .5s;
+}
+.hover_content_10 h4{
+	color: #fff;
+}
+.hover_content_10 ul {
+	margin-top: 20px;
+}
+.hover_content_10 ul li{
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hover_content_10 ul li a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: #fff;
+	color: #d1068d;
+	font-size: 14px;
+}
+/*
+	End hover style 10 css
+*/
+
+/*
+	12. Start Footer area css
+*/
+.miktu_footer{
+	background: #4f93e1;
+	padding: 40px 0;
+}
+.miktu_footer .footer_text{
+	text-align: center;
+}
+.miktu_footer .footer_text p{
+	color: #fff;
+	font-size: 16px;
+}
+/*
+	End Footer area css
+*/
+
+/*
+   13. Start Responsive css
+*/
+
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+	.miktu_title h1 {
+	    font-size: 28px;
+	}
+	
+}
+/*
+    End Responsive css
+*/

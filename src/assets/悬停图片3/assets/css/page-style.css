@@ -1,0 +1,126 @@
+/*-------------------------------------
+Template Name: Miktu
+Template URI: https://webtend.net/
+Description: Miktu - Responsive bootstrap 4 form is a simple and unique style for Iamge hover built with Bootstrap framework. 
+Author: webtend
+Author URI: https://ryetheme.com/
+Version: 1.0
+---------------------------------------
+
+
+/*
+    Google fonts
+*/
+/*
+    Google fonts
+*/
+
+/*---------------------------------------
+    Default CSS
+---------------------------------------*/
+
+* {
+    margin:0;
+    padding:0
+}
+.miktu_wrapper a,
+.miktu_wrapper a:hover,
+.miktu_wrapper a:focus {
+    text-decoration:none
+}
+.miktu_wrapper p{
+    margin: 0;
+}
+.miktu_wrapper ul{
+    margin-bottom: 0;
+}
+.miktu_wrapper li {
+    list-style: none
+}
+.miktu_wrapper h1, 
+.miktu_wrapper h2, 
+.miktu_wrapper h3,
+.miktu_wrapper h4,
+.miktu_wrapper h5,
+.miktu_wrapper h6{
+    margin: 0px 0;
+}
+.miktu_wrapper h4{
+    font-size: 20px;
+    font-weight: bold;
+}
+.miktu_wrapper h5{
+    font-size: 15px;
+}
+.mmiktu_wrapper p{
+	margin: 0;
+}
+.miktu_wrapper{
+	font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 30px;
+    overflow-x: hidden;
+}
+.miktu_wrapper .miktu_hover{
+    padding: 70px 0;   
+}
+/*---------------------------------------
+    Start hoverta-hover-bg section css
+---------------------------------------*/
+.miktu_bg{
+    background: url(../img/top-bg.jpg) no-repeat center;
+    background-size: cover;
+    position: relative;
+    padding: 162px 0;
+}
+.top-bg .top-text h1{
+    font-size: 45px;
+    font-weight: 700;
+    color: #fff;
+}
+.top-bg .top-text p{
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 60px;
+}
+.top-bg .top-text .top-btn{
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    width: 230px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50px;
+    text-transform: capitalize;
+    color: #3d4eda;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all .5s;
+}
+.top-bg .top-text .top-btn:hover{
+    box-shadow: 0px 6px 24.84px 2.16px rgba(0, 0, 0, 0.1);
+}
+/*---------------------------------------
+    End hoverta-hover-bg section css
+---------------------------------------*/
+/*---------------------------------------
+    Responsive css
+---------------------------------------*/
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+}
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+}
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) {
+    .miktu_bg {
+        padding: 60px 0;
+    }
+    .top-bg .top-text h1 {
+        font-size: 30px;
+    }
+    .top-bg .top-text p {
+        margin-bottom: 40px;
+    }
+}

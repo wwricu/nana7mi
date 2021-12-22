@@ -1,13 +1,18 @@
 <template>
-  <div id="image1" class="fixed_image" :style="{'background-position-y':positionY+'px'}"></div>
-  <div id="mask1" class="opacity_mask"></div>
-  <div id="article"></div>
-  <div id="image2" class="fixed_image" :style="{'background-position-y':positionY+540+'px'}"></div>
-  <!-- ,'top':1080-scrollTop*ratio+'px' ,'top':2160-scrollTop*ratio+'px'-->
-  <div id="image3" class="fixed_image" :style="{'background-position-y':positionY+1080+'px'}"></div>
+  <div id="image1"  :class="{'upOut':coverInit==true}"></div>
+  <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
+  <Home v-if="coverInit" :Display="scrollTop <= 200"></Home>
+  <Video v-if="coverInit" id="origin" :Display="scrollTop > 1100 && scrollTop < 1900"></Video>
+  <div v-if="coverInit" id="image2" class="fixed_image" :style="{'background-position-y':positionY+100+'px'}"></div>
+  <Video v-if="coverInit" id="amateur" :Display="docHeight < (windowHeight + scrollTop) && scrollTop > 2300 && scrollTop < 3100"></Video>
+  <div v-if="coverInit" id="image3" class="fixed_image" :style="{'background-position-y':positionY+2800+'px'}"></div>
+  <Footer v-if="coverInit" ></Footer>
 </template>
 
 <script>
+import Home from "@/components/Home";
+import Video from "@/components/Video";
+import Footer from "@/components/footer";
 
 export default {
   name: 'App',
@@ -21,20 +26,16 @@ export default {
         'BV1yf4y137XH', // myself
         'BV1y4411P7Wg' // introduction
       ],
+      coverInit: false,
       ratio: 2,
       positionY: 0,
       Y: 0,
       scrollTop: 0,
-      windowHeight: 0
+      windowHeight: 0,
+      docHeight: 0
     }
   },
   methods: {
-    originMouseEnter() {
-      this.origin_active = true
-    },
-    originMouseOut() {
-      this.origin_active = false
-    },
     goBV(BV) {
       window.open("https://www.bilibili.com/video/" + BV);
     },
@@ -43,47 +44,85 @@ export default {
           window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop;
+      this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio; // 原始高度-滚动距离*视差系数
-      this.windowHeight = document.documentElement.clientHeight
+      this.docHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight;
+      // console.log(this.windowHeight, this.scrollTop, this.docHeight);
+    },
+    initCover() {
+      this.coverInit = true;
+      this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
     }
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll); //创建滚动监听，页面滚动回调handleScroll方法
-    this.Y = document.getElementById("image1").offsetTop;// * this.ratio;
+    this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
+    this.windowHeight = document.documentElement.clientHeight;
   },
   components: {
+    Footer,
+    Home,
+    Video
   }
 }
 </script>
 
 <style scoped>
 #image1 {
-  background-image: url("./assets/image/background6.jpg");
-  height: 1080px;
-  top: 0;
-}
-#article {
-  top: 1000px;
-  left: 0;
+  background-image: url("./assets/image/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: fixed;
+  height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
   position: absolute;
-  height: 400px;
-  z-index: 100;
-  background-color: white;
+  z-index: 998;
+}
+#mask1 {
+  font-size: 50px;
+  padding-top: 300px;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0.4;
+  -moz-opacity: 0.4;
+  width: 100%;
+  z-index: 999;
+  background-color: #000;
 }
 #image2 {
   background-image: url("./assets/image/background3.jpg");
-  height: 1080px;
+  height: 480px;
   top: 1080px;
+}
+#origin {
+  position: absolute;
+  top: 1800px; /* 1800 - (1080 + 480) == 240 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
 }
 #image3 {
   background-image: url("./assets/image/Nana7mi_background.jpg");
-  height: 1080px;
-  top: 2160px;
+  height: 540px;
+  top: 2350px; /* 1800 + 209 + 240 == 2250 */
 }
-#mask1 {
-  top: 0;
-  height: 3060px;
+#amateur {
+  position: absolute;
+  top: 3000px; /* 2350 + 540 + 240 == 3000 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+Footer {
+  position: absolute;
+  top: 3500px;
   width: 100%;
 }
 .fixed_image {
@@ -94,17 +133,36 @@ export default {
   width: 100%;
   z-index: -2;
 }
-.opacity_mask {
-  position: absolute;
-  left: 0;
-  opacity: 0.55;
-  -moz-opacity: 0.55;
-  width: 100%;
-  z-index: -1;
-  background-color: #000;
+
+.upOut {
+  animation: upOut 1s ease;
+  animation-fill-mode: forwards;
+}
+@keyframes upOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+}
+.maskUpOut {
+  animation: maskUpOut 1s ease;
+  animation-fill-mode: forwards;
+}
+@keyframes maskUpOut {
+  from {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0.6;
+  }
 }
 </style>
-
 <style>
 body {}
 </style>

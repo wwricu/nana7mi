@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纯CSS3鼠标悬停图片炫酷动画特效</title>
+
+<!--可无视-->
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+
+<!--响应式框架-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css" />
+
+<!--图标调用-->
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--主要样式-->
+<style>
+.demo{padding: 2em 0;}
+:root{
+	--color_1: #fff;
+	--main-color: #1dd1a1;
+}
+.box{
+	font-family: 'Niramit', sans-serif;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+.box:before,
+.box:after,
+.box-content:before,
+.box-content:after{
+	content: '';
+	background: linear-gradient(transparent,rgba(0,0,0,0.9));
+	height: 100%;
+	width: 25%;
+	transform: translateY(-100%);
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	transition: all 0.3s;
+}
+.box:hover:before,
+.box:hover:after,
+.box:hover .box-content:before,
+.box:hover .box-content:after{
+	transform: translateY(0);
+}
+.box:after{ left: 25%; }
+.box .box-content:before{ left: 50%; }
+.box .box-content:after{ left: 75%; }
+.box:hover:before{ transition-delay: 0.225s; }
+.box:hover:after{ transition-delay: 0.075s; }
+.box:hover .box-content:before{ transition-delay: 0.15s; }
+.box:hover .box-content:after{ transition-delay: 0s; }
+.box img{
+	width: 100%;
+	height: auto;
+	transition: all 0.3s ease 0s;
+}
+.box:hover img{ filter: grayscale(100%); }
+.box .box-content{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transition: all 0.2s;
+}
+.content{
+	width: 100%;
+	padding: 7px 0;
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	bottom: -30px;
+	z-index: 2;
+	transition: all 0.3s ease 0.1s;
+}
+.box:hover .content{
+	opacity: 1;
+	bottom: 5px;
+}
+.box .title{
+	color:#fff;
+	font-size: 25px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin: 0;
+}
+.box .post{
+	color: var(--main-color);
+	font-size: 16px;
+	font-style: italic;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+	display: block;
+}
+.box .icon{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	transform: translateX(-50%);
+	position: absolute;
+	top: 15px;
+	right: -10px;
+	z-index: 2;
+	transition: all 0.5s ease 0.3s;
+}
+.box .icon li{
+	opacity: 0;
+	transform: scale(0) rotate(360deg);
+	transition: all 400ms;
+}
+.box:hover .icon li{
+	opacity: 1;
+	transform: scale(1) rotate(0);
+}
+.box .icon li a{
+	color: var(--color_1);
+	background-color: var(--main-color);
+	font-size: 20px;
+	line-height: 40px;
+	height: 40px;
+	width: 40px;
+	margin-bottom: 10px;
+	border-radius: 50%;
+	display: block;
+	position: relative;
+	transition: all 0.3s;
+}
+.box .icon li a:hover{
+	text-decoration: none;
+	color: var(--main-color);
+	background-color: var(--color_1);
+	border-radius: 0 20px 0 20px;
+}
+@media only screen and (max-width:990px){
+	.box{ margin-bottom: 30px; }
+}
+@media only screen and (max-width:479px){
+	.box .title{ font-size: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+				<div class="box">
+					<img src="images/img-1.jpg" alt="">
+					<div class="box-content">
+						<div class="content">
+							<span class="post">Web developer</span>
+							<h3 class="title">Steve Thomas</h3>
+						</div>
+						<ul class="icon">
+							<li><a href="#"><i class="fa fa-search"></i></a></li>
+							<li><a href="#"><i class="fa fa-link"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="box">
+					<img src="images/img-2.jpg" alt="">
+					<div class="box-content">
+						<div class="content">
+							<span class="post">Web designer</span>
+							<h3 class="title">Kristina</h3>
+						</div>
+						<ul class="icon">
+							<li><a href="#"><i class="fa fa-search"></i></a></li>
+							<li><a href="#"><i class="fa fa-link"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="box">
+					<img src="images/img-3.jpg" alt="">
+					<div class="box-content">
+						<div class="content">
+							<span class="post">Web designer</span>
+							<h3 class="title">Williamson</h3>
+						</div>
+						<ul class="icon">
+							<li><a href="#"><i class="fa fa-search"></i></a></li>
+							<li><a href="#"><i class="fa fa-link"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
