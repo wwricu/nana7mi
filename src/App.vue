@@ -1,11 +1,12 @@
 <template>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <div id="image1"  :class="{'upOut':coverInit==true}"></div>
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
-  <Home v-if="coverInit" :Display="scrollTop <= 20"></Home>
-  <Video v-if="coverInit" id="origin" :Display="scrollTop > 50 && scrollTop < 90"></Video>
+  <Home v-if="coverInit" :Display="scrollTop <= 50"></Home>
+  <Video v-if="coverInit" id="origin" :Display="scrollTop > originShow && scrollTop < originHide"></Video>
   <div v-if="coverInit" id="image2" class="fixed_image" :style="{'background-position-y':positionY+'rem'}"></div>
-  <Video v-if="coverInit" id="amateur" :Display="scrollTop > 130 && scrollTop < 160"></Video>
-  <div v-if="coverInit" id="image3" class="fixed_image" :style="{'background-position-y':(positionY + 130)+'rem'}"></div>
+  <Video v-if="coverInit" id="amateur" :Display="scrollTop > amateurShow && scrollTop < amateurHide"></Video>
+  <div v-if="coverInit" id="image3" class="fixed_image" :style="{'background-position-y':positionY+image3Pos+'rem'}"></div>
   <Footer v-if="coverInit" ></Footer>
 </template>
 
@@ -33,7 +34,12 @@ export default {
       scrollTop: 0,
       windowHeight: 0,
       docHeight: 0,
-      fontSize: window.innerWidth / 100
+      fontSize: window.innerWidth / 100,
+      originShow: 90, // rem
+      originHide: 160, // rem
+      amateurShow: 210, // rem
+      amateurHide: 290, // rem
+      image3Pos: 220
     }
   },
   methods: {
@@ -49,10 +55,17 @@ export default {
 
       this.positionY = this.Y - this.scrollTop * this.ratio; // 原始高度-滚动距离*视差系数
       // this.docHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight;
-      console.log("font size: ", this.fontSize);
+      if (window.innerHeight > 1600 && window.innerWidth < 1200) {
+        this.originShow = 50; // rem
+        this.originHide = 130; // rem
+        this.amateurShow = 130; // rem
+        this.amateurHide = 210; // rem
+        this.image3Pos = 170;
+      }
     },
     handleResize() {
       this.fontSize = window.innerHeight / 100; // 1vw
+
     },
     initCover() {
       this.coverInit = true;
@@ -105,12 +118,12 @@ export default {
 }
 #image2 {
   background-image: url("./assets/image/background3.jpg");
-  height: 30rem;
+  height: 40rem;
   top: 100rem;
 }
 #origin {
   position: absolute;
-  top: 140rem;
+  top: 160rem;
   /* 1800 - (1080 + 480) == 240 */
   left: 50%;
   transform: translateX(-50%);
@@ -118,13 +131,13 @@ export default {
 }
 #image3 {
   background-image: url("./assets/image/Nana7mi_background.jpg");
-  height: 33.75rem;
-  top: 180rem;
+  height: 40rem;
+  top: 210rem;
   /* 1800 + 209 + 240 == 2250 */
 }
 #amateur {
   position: absolute;
-  top: 240rem;
+  top: 280rem;
   /* 2350 + 540 + 240 == 3000 */
   left: 50%;
   transform: translateX(-50%);
@@ -132,7 +145,7 @@ export default {
 }
 Footer {
   position: absolute;
-  top: 280rem;
+  top: 340rem;
   width: 100%;
 }
 .fixed_image {
@@ -169,6 +182,26 @@ Footer {
   to {
     transform: translateY(-100%);
     opacity: 0.6;
+  }
+}
+@media only screen and (min-height:1400px) and (max-width: 1200px) {
+  /* portable device */
+  #image2 {
+    height: 10rem;
+    top: 100rem;
+  }
+  #origin {
+    top: 130rem;
+  }
+  #image3 {
+    height: 10rem;
+    top: 190rem;
+  }
+  #amateur {
+    top: 210rem;
+  }
+  Footer {
+    top: 250rem;
   }
 }
 </style>

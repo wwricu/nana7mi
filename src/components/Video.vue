@@ -208,19 +208,36 @@ export default {
 [class*="col-"] {
   padding: 10px;
 }
-@media only screen and (min-width:1200px) {
-  [class*="col-"] {
-    padding: 20px;
-  }
-  .container { width: 1500px; }
+
+@media only screen and (min-width:479px) {
+  .box .title{ font-size: 20px; }
 }
-@media only screen and (max-width:990px) {
+@media only screen and (min-width:990px) {
   .box { margin-bottom: 30px; }
   [class*="col-"] { padding: 10px; }
 }
-@media only screen and (max-width:479px) {
-  .box .title{ font-size: 20px; }
+@media only screen and (min-width:1900px) {
+  /* 1920 x 1080 */
+  [class*="col-"] {
+    padding: 20px;
+  }
+  .container { width: 1800px; }
 }
+@media only screen and (min-width:2500px) {
+  /* 2560 x 1440 */
+  [class*="col-"] {
+    padding: 30px;
+  }
+  .container { width: 2400px; }
+}
+@media only screen and (min-width:3800px) {
+  /* 3840 x 2160 */
+  [class*="col-"] {
+    padding: 30px;
+  }
+  .container { width: 3000px; }
+}
+
 .upIn {
   animation: upIn 1s ease;
 }
