@@ -14,24 +14,24 @@ export default {
 
 <style scoped>
 #image {
-  top: 100px;
+  top: 6.25rem;
   left: 50%;
-  height: 640px;
-  width: 480px;
+  height: 40rem;
+  width: 30rem;
   transform: translateX(-120%);
   position: absolute;
   z-index: 100;
   background-color: green;
   text-align: center;
-  padding-top: 60px;
-  font-size: 30px;
+  padding-top: 3.75rem;
+  font-size: 1.875rem;
   color: white;
 }
 #intro {
-  top: 100px;
+  top: 6.25rem;
   right: 50%;
-  height: 640px;
-  width: 480px;
+  height: 40rem;
+  width: 30rem;
   transform: translateX(120%);
   position: absolute;
   z-index: 100;

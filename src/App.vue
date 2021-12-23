@@ -1,18 +1,18 @@
 <template>
   <div id="image1"  :class="{'upOut':coverInit==true}"></div>
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
-  <Home v-if="coverInit" :Display="scrollTop <= 200"></Home>
-  <Video v-if="coverInit" id="origin" :Display="scrollTop > 1100 && scrollTop < 1900"></Video>
-  <div v-if="coverInit" id="image2" class="fixed_image" :style="{'background-position-y':positionY+100+'px'}"></div>
-  <Video v-if="coverInit" id="amateur" :Display="docHeight < (windowHeight + scrollTop) && scrollTop > 2300 && scrollTop < 3100"></Video>
-  <div v-if="coverInit" id="image3" class="fixed_image" :style="{'background-position-y':positionY+2800+'px'}"></div>
+  <Home v-if="coverInit" :Display="scrollTop <= 20"></Home>
+  <Video v-if="coverInit" id="origin" :Display="scrollTop > 50 && scrollTop < 90"></Video>
+  <div v-if="coverInit" id="image2" class="fixed_image" :style="{'background-position-y':positionY+'rem'}"></div>
+  <Video v-if="coverInit" id="amateur" :Display="scrollTop > 130 && scrollTop < 160"></Video>
+  <div v-if="coverInit" id="image3" class="fixed_image" :style="{'background-position-y':(positionY + 130)+'rem'}"></div>
   <Footer v-if="coverInit" ></Footer>
 </template>
 
 <script>
 import Home from "@/components/Home";
 import Video from "@/components/Video";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 export default {
   name: 'App',
@@ -32,7 +32,8 @@ export default {
       Y: 0,
       scrollTop: 0,
       windowHeight: 0,
-      docHeight: 0
+      docHeight: 0,
+      fontSize: window.innerWidth / 100
     }
   },
   methods: {
@@ -41,13 +42,17 @@ export default {
     },
     handleScroll: function() {
       this.scrollTop =
-          window.pageYOffset ||
+          (window.pageYOffset ||
           document.documentElement.scrollTop ||
-          document.body.scrollTop;
-      this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
+          document.body.scrollTop) / this.fontSize; // rem
+      this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
+
       this.positionY = this.Y - this.scrollTop * this.ratio; // 原始高度-滚动距离*视差系数
-      this.docHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight;
-      // console.log(this.windowHeight, this.scrollTop, this.docHeight);
+      // this.docHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight;
+      console.log("font size: ", this.fontSize);
+    },
+    handleResize() {
+      this.fontSize = window.innerHeight / 100; // 1vw
     },
     initCover() {
       this.coverInit = true;
@@ -56,8 +61,10 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll); //创建滚动监听，页面滚动回调handleScroll方法
-    this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
-    this.windowHeight = document.documentElement.clientHeight;
+    window.addEventListener('resize', this.handleResize);
+    // this.windowHeight = document.documentElement.clientHeight;
+    this.handleResize();
+    this.handleScroll();
   },
   components: {
     Footer,
@@ -82,8 +89,8 @@ export default {
   z-index: 998;
 }
 #mask1 {
-  font-size: 50px;
-  padding-top: 300px;
+  font-size: 3.125rem;
+  padding-top: 18.75rem;
   text-align: center;
   color: white;
   position: absolute;
@@ -98,31 +105,34 @@ export default {
 }
 #image2 {
   background-image: url("./assets/image/background3.jpg");
-  height: 480px;
-  top: 1080px;
+  height: 30rem;
+  top: 100rem;
 }
 #origin {
   position: absolute;
-  top: 1800px; /* 1800 - (1080 + 480) == 240 */
+  top: 140rem;
+  /* 1800 - (1080 + 480) == 240 */
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
 }
 #image3 {
   background-image: url("./assets/image/Nana7mi_background.jpg");
-  height: 540px;
-  top: 2350px; /* 1800 + 209 + 240 == 2250 */
+  height: 33.75rem;
+  top: 180rem;
+  /* 1800 + 209 + 240 == 2250 */
 }
 #amateur {
   position: absolute;
-  top: 3000px; /* 2350 + 540 + 240 == 3000 */
+  top: 240rem;
+  /* 2350 + 540 + 240 == 3000 */
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
 }
 Footer {
   position: absolute;
-  top: 3500px;
+  top: 280rem;
   width: 100%;
 }
 .fixed_image {
@@ -133,7 +143,6 @@ Footer {
   width: 100%;
   z-index: -2;
 }
-
 .upOut {
   animation: upOut 1s ease;
   animation-fill-mode: forwards;
@@ -164,6 +173,6 @@ Footer {
 }
 </style>
 <style>
-body {}
+html { font-size: 1vh; }
 </style>
 
