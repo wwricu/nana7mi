@@ -92,6 +92,7 @@ export default {
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 10px 10px 5px #888888;
 }
 .box:before,
 .box:after,

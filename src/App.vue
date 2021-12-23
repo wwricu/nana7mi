@@ -89,31 +89,31 @@ export default {
 
 <style scoped>
 #image1 {
+  position: absolute;
+  z-index: 998;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   background-image: url("./assets/image/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 998;
 }
 #mask1 {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.4;
+  -moz-opacity: 0.4;
   font-size: 3.125rem;
   padding-top: 18.75rem;
   text-align: center;
   color: white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  opacity: 0.4;
-  -moz-opacity: 0.4;
-  width: 100%;
-  z-index: 999;
   background-color: #000;
 }
 #image2 {
@@ -123,11 +123,11 @@ export default {
 }
 #origin {
   position: absolute;
+  z-index: 1;
   top: 160rem;
   /* 1800 - (1080 + 480) == 240 */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
 }
 #image3 {
   background-image: url("./assets/image/Nana7mi_background.jpg");
@@ -141,7 +141,7 @@ export default {
   /* 2350 + 540 + 240 == 3000 */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 1;
 }
 Footer {
   position: absolute;
@@ -154,7 +154,7 @@ Footer {
   background-size: cover;
   left: 0;
   width: 100%;
-  z-index: -2;
+  z-index: -1;
 }
 .upOut {
   animation: upOut 1s ease;

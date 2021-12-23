@@ -14,29 +14,31 @@ export default {
 
 <style scoped>
 #intro {
+  position: absolute;
+  z-index: 1;
   top: 15rem;
   left: 50%;
+  transform: translateX(-120%);
   height: 70rem;
   width: 50rem;
-  transform: translateX(-120%);
-  position: absolute;
-  z-index: 100;
   background-color: green;
   text-align: center;
   padding-top: 3.75rem;
   font-size: 1.875rem;
   color: white;
+  box-shadow: 10px 10px 5px #888888;
 }
 #image {
+  position: absolute;
+  z-index: 1;
   top: 15rem;
   right: 50%;
+  transform: translateX(120%);
   height: 70rem;
   width: 50rem;
-  transform: translateX(120%);
-  position: absolute;
-  z-index: 100;
   background: url("../assets/image/kachiyu_.jpg") no-repeat fixed center 0;
   background-size: cover;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 .leftIn {
