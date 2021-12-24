@@ -2,6 +2,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <div id="image1"  :class="{'upOut':coverInit==true}"></div>
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
+  <TopMenu></TopMenu>
   <Home v-if="coverInit" :Display="scrollTop <= 50"></Home>
 <!--  <div id="background1"></div>-->
   <Video v-if="coverInit" id="origin" :Display="scrollTop > originShow && scrollTop < originHide"></Video>
@@ -15,6 +16,7 @@
 import Home from "@/components/Home";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
+import TopMenu from "@/components/TopMenu";
 
 export default {
   name: 'App',
@@ -76,7 +78,7 @@ export default {
         this.amateurHide = 290; // rem
         this.image3Pos = 220;
       }
-      console.log(window.innerWidth, window.innerHeight);
+      // console.log(window.innerWidth, window.innerHeight);
     },
     handleResize() {
       this.fontSize = window.innerHeight / 100; // 1vw
@@ -97,7 +99,8 @@ export default {
   components: {
     Footer,
     Home,
-    Video
+    Video,
+    TopMenu
   }
 }
 </script>
