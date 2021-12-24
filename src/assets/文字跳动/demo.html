@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css文本动画</title>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+.wrapper {
+  width: 100vw;
+  text-align: center;
+}
+.wrapper span {
+  -webkit-text-stroke-width: 1.25px;
+  -webkit-text-stroke-color: #000;
+  font-size: 100px;
+  text-shadow: 0 0px #f3c623, 0 0px #f2aaaa;
+  transform: translate(0, 100%) rotate(4deg);
+  animation: jump 2s ease-in-out infinite;
+  display: inline-block;
+  font-family: "Titan One", cursive;
+  color: #fff;
+}
+.wrapper span:nth-child(1) {
+  animation-delay: 120ms;
+}
+.wrapper span:nth-child(2) {
+  animation-delay: 240ms;
+}
+.wrapper span:nth-child(3) {
+  animation-delay: 360ms;
+}
+.wrapper span:nth-child(4) {
+  animation-delay: 480ms;
+}
+.wrapper span:nth-child(5) {
+  animation-delay: 600ms;
+}
+.wrapper span:nth-child(6) {
+  animation-delay: 720ms;
+}
+.wrapper span:nth-child(7) {
+  animation-delay: 840ms;
+}
+
+@keyframes jump {
+  33% {
+    text-shadow: 0 60px #f37121, 0 150px #f2aaaa;
+  }
+  50% {
+    transform: translate(0, 0) rotate(-4deg);
+    text-shadow: 0 0px #8fc0a9, 0 0px #84a9ac;
+  }
+  66.67% {
+    text-shadow: 0 -60px #d54062, 0 -150px #8fc0a9;
+  }
+}
+html {
+  width: 100%;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+@media screen and (max-height: 200px) {
+  .wrapper {
+    transform: scale(0.3, 0.3);
+  }
+}
+@media screen and (max-width: 576px) {
+  .wrapper span {
+    font-size: 50px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <span>W</span>
+  <span>E</span>
+  <span>E</span>
+  <span>K</span>
+  <span>E</span>
+  <span>N</span>
+  <span>D</span>
+</div>
+
+</body>
+</html>

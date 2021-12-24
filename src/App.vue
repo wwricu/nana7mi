@@ -3,6 +3,7 @@
   <div id="image1"  :class="{'upOut':coverInit==true}"></div>
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
   <Home v-if="coverInit" :Display="scrollTop <= 50"></Home>
+<!--  <div id="background1"></div>-->
   <Video v-if="coverInit" id="origin" :Display="scrollTop > originShow && scrollTop < originHide"></Video>
   <div v-if="coverInit" id="image2" class="fixed_image" :style="{'background-position-y':positionY+'rem'}"></div>
   <Video v-if="coverInit" id="amateur" :Display="scrollTop > amateurShow && scrollTop < amateurHide"></Video>
@@ -54,14 +55,28 @@ export default {
       this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
 
       this.positionY = this.Y - this.scrollTop * this.ratio; // 原始高度-滚动距离*视差系数
-      // this.docHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight;
       if (window.innerHeight > 1600 && window.innerWidth < 1200) {
+        /* portable device with two column video */
         this.originShow = 50; // rem
         this.originHide = 130; // rem
         this.amateurShow = 130; // rem
         this.amateurHide = 210; // rem
         this.image3Pos = 170;
+      } else if (window.innerWidth < 1200) {
+        /* desktop device with two column video */
+        this.originShow = 50; // rem
+        this.originHide = 250; // rem
+        this.amateurShow = 250; // rem
+        this.amateurHide = 400; // rem
+        this.image3Pos = 400;
+      } else {
+        this.originShow = 90; // rem
+        this.originHide = 160; // rem
+        this.amateurShow = 210; // rem
+        this.amateurHide = 290; // rem
+        this.image3Pos = 220;
       }
+      console.log(window.innerWidth, window.innerHeight);
     },
     handleResize() {
       this.fontSize = window.innerHeight / 100; // 1vw
@@ -115,6 +130,15 @@ export default {
   text-align: center;
   color: white;
   background-color: #000;
+}
+#background1 {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  height: 105rem;
+  width: 100%;
+  background-color: black;
+  opacity: 0.8;
 }
 #image2 {
   background-image: url("./assets/image/background3.jpg");
@@ -184,7 +208,21 @@ Footer {
     opacity: 0.6;
   }
 }
-@media only screen and (min-height:1400px) and (max-width: 1200px) {
+
+@media only screen and (max-width: 1200px) {
+  /* desktop device with 2 column video */
+  #image3 {
+    height: 50rem;
+    top: 300rem;
+  }
+  #amateur {
+    top: 350rem;
+  }
+  Footer {
+    top: 500rem;
+  }
+}
+@media only screen and (min-height:1600px) and (max-width: 1200px) {
   /* portable device */
   #image2 {
     height: 10rem;
@@ -207,5 +245,9 @@ Footer {
 </style>
 <style>
 html { font-size: 1vh; }
+body {
+  background: url("assets/image/bg.009bdf28.png");
+  background-size: cover;
+}
 </style>
 

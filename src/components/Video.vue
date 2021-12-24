@@ -2,7 +2,7 @@
 <div class="origin">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'upIn':Display==true,'downOut':Display==false}">
+      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
         <div class="box">
           <img src="../assets/image/BV1vJ411B7ng.jpg" alt="">
           <div class="box-content">
@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'downIn':Display==true,'upOut':Display==false}">
+      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
         <div class="box">
           <img src="../assets/image/BV1y4411P7Wg.jpg" alt="">
           <div class="box-content">
@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'upIn':Display==true,'downOut':Display==false}">
+      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
         <div class="box">
           <img src="../assets/image/BV1yf4y137XH.jpg" alt="">
           <div class="box-content">
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'downIn':Display==true,'upOut':Display==false}">
+      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
         <div class="box">
           <img src="../assets/image/BV18q4y1z7Vv.jpg" alt="">
           <div class="box-content">
@@ -238,7 +238,7 @@ export default {
   }
   .container { width: 3000px; }
 }
-
+/* animations */
 .upIn {
   animation: upIn 1s ease;
 }
@@ -251,6 +251,13 @@ export default {
 }
 .downOut {
   animation: downOut 1s ease;
+  animation-fill-mode: forwards;
+}
+.plainIn {
+  animation: plainIn 1s ease;
+}
+.plainOut {
+  animation: plainOut 1s ease;
   animation-fill-mode: forwards;
 }
 @keyframes upIn {
@@ -290,6 +297,23 @@ export default {
   }
   to {
     transform: translateY(-120%);
+    opacity: 0;
+    display: none;
+  }
+}
+@keyframes plainIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes plainOut {
+  from {
+    opacity: 1;
+  }
+  to {
     opacity: 0;
   }
 }
