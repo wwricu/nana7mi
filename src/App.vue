@@ -5,6 +5,7 @@
   <TopMenu></TopMenu>
   <Home v-if="coverInit" :Display="scrollTop <= 50"></Home>
 <!--  <div id="background1"></div>-->
+<!--  <ScrollBar id="scroll1" v-if="coverInit" :activeStep="scrollStep"></ScrollBar>-->
   <Video v-if="coverInit" id="origin" :Display="scrollTop > originShow && scrollTop < originHide"></Video>
   <div v-if="coverInit" id="image2" class="fixed_image" :style="{'background-position-y':positionY+'rem'}"></div>
   <Video v-if="coverInit" id="amateur" :Display="scrollTop > amateurShow && scrollTop < amateurHide"></Video>
@@ -17,6 +18,7 @@ import Home from "@/components/Home";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
 import TopMenu from "@/components/TopMenu";
+// import ScrollBar from "@/components/ScrollBar";
 
 export default {
   name: 'App',
@@ -31,6 +33,7 @@ export default {
         'BV1y4411P7Wg' // introduction
       ],
       coverInit: false,
+      scrollStep: 1,
       ratio: 2,
       positionY: 0,
       Y: 0,
@@ -55,7 +58,6 @@ export default {
           document.documentElement.scrollTop ||
           document.body.scrollTop) / this.fontSize; // rem
       this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
-
       this.positionY = this.Y - this.scrollTop * this.ratio; // 原始高度-滚动距离*视差系数
       if (window.innerHeight > 1600 && window.innerWidth < 1200) {
         /* portable device with two column video */
@@ -78,11 +80,15 @@ export default {
         this.amateurHide = 290; // rem
         this.image3Pos = 220;
       }
-      // console.log(window.innerWidth, window.innerHeight);
+
+      if (this.scrollTop >= this.amateurShow) {
+        this.scrollStep = 2;
+      } else {
+        this.scrollStep = 1;
+      }
     },
     handleResize() {
       this.fontSize = window.innerHeight / 100; // 1vw
-
     },
     initCover() {
       this.coverInit = true;
@@ -94,13 +100,17 @@ export default {
     window.addEventListener('resize', this.handleResize);
     // this.windowHeight = document.documentElement.clientHeight;
     this.handleResize();
-    this.handleScroll();
+    // this.handleScroll(); // this caused bugs in menu
+  },
+  updated() {
+
   },
   components: {
     Footer,
     Home,
     Video,
-    TopMenu
+    TopMenu,
+    // ScrollBar
   }
 }
 </script>
@@ -134,6 +144,9 @@ export default {
   color: white;
   background-color: #000;
 }
+TopMenu {
+  box-shadow: 10px 10px 5px #888888;
+}
 #background1 {
   position: absolute;
   z-index: 5;
@@ -147,6 +160,13 @@ export default {
   background-image: url("./assets/image/background3.jpg");
   height: 40rem;
   top: 100rem;
+  border: 5px #000;
+}
+#scroll1 {
+  position: absolute;
+  top: 160rem;
+  left: 10%;
+  z-index: -2;
 }
 #origin {
   position: absolute;
@@ -160,7 +180,7 @@ export default {
   background-image: url("./assets/image/Nana7mi_background.jpg");
   height: 40rem;
   top: 210rem;
-  /* 1800 + 209 + 240 == 2250 */
+  border: 5px #000;
 }
 #amateur {
   position: absolute;

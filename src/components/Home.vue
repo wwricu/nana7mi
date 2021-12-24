@@ -26,8 +26,6 @@
       <el-tag size="small">脆鲨</el-tag>
     </el-descriptions-item>
     <el-descriptions-item label-align="right" align="left" label="特技" width="2">鱼人语、可以随时随地睡着、可以睡很久</el-descriptions-item>
-
-
   </el-descriptions>
 </template>
 
@@ -58,7 +56,9 @@ export default {
   padding-top: 15rem;
   padding-left: 6rem;
   font-size: 2rem;
-  box-shadow: 10px 10px 5px #888888;
+  /*box-shadow: 10px 10px 5px #888888;*/
+  /*box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);*/
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
   border-radius: 2rem;
 }
 #image {
@@ -71,7 +71,7 @@ export default {
   width: 50rem;
   background: url("../assets/image/kachiyu_.jpg") no-repeat fixed center 0;
   background-size: cover;
-  box-shadow: 10px 10px 5px #888888;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
   border-radius: 2rem;
 }
 
