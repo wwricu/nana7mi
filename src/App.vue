@@ -3,9 +3,9 @@
   <div id="image1"  :class="{'upOut':coverInit==true}"></div>
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
   <TopMenu></TopMenu>
-  <Home v-if="coverInit" :Display="scrollTop <= 50"></Home>
+  <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
-         :Display="scrollTop > originShow && scrollTop < originHide"
+         :Display="(scrollTop > originShow && scrollTop < originHide)"
          :title_text="'原创作品'"
          :video_index="0"
   ></Video>
@@ -13,13 +13,14 @@
        :style="{'background-position-y':positionY+'rem'}"
   ></div>
   <Video v-if="coverInit" id="amateur"
-         :Display="scrollTop > amateurShow && scrollTop < amateurHide"
+         :Display="(scrollTop > amateurShow && scrollTop < amateurHide && scrollTop+clientHeight<scrollHeight)"
          :title_text="'二创作品'"
          :video_index="1"
   ></Video>
   <div v-if="coverInit" id="image3" class="fixed_image"
        :style="{'background-position-y':positionY+image3Pos+'rem'}"
   ></div>
+  <JumpLetters id="letters" :Display="scrollTop+clientHeight>=scrollHeight" v-if="coverInit"></JumpLetters>
   <Footer v-if="coverInit" ></Footer>
 </template>
 
@@ -28,6 +29,7 @@ import Home from "@/components/Home";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
 import TopMenu from "@/components/TopMenu";
+import JumpLetters from "@/components/JumpLetters";
 
 export default {
   name: 'App',
@@ -38,14 +40,15 @@ export default {
       positionY: 0,
       Y: 0,
       scrollTop: 0,
-      windowHeight: 0,
-      docHeight: 0,
+      clientHeight: 0,
+      scrollHeight: 0,
       fontSize: window.innerWidth / 100,
       originShow: 90, // rem
       originHide: 160, // rem
       amateurShow: 210, // rem
       amateurHide: 290, // rem
-      image3Pos: 220
+      image3Pos: 220,
+      hidePlayer: true,
     }
   },
   methods: {
@@ -54,6 +57,9 @@ export default {
           (window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop) / this.fontSize; // rem
+      this.clientHeight = document.documentElement.clientHeight / this.fontSize; // visible height
+      this.scrollHeight = Math.floor(document.documentElement.scrollHeight / this.fontSize); // total height
+
       this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio;
       if (window.innerHeight > 1600 && window.innerWidth < 1200) {
@@ -99,13 +105,13 @@ export default {
     Home,
     Video,
     TopMenu,
+    JumpLetters
   }
 }
 </script>
 
 <style scoped>
 #image1 {
-  position: absolute;
   z-index: 998;
   top: 0;
   left: 0;
@@ -132,9 +138,6 @@ export default {
   color: white;
   background-color: #000;
 }
-TopMenu {
-  box-shadow: 10px 10px 5px #888888;
-}
 #image2 {
   background-image: url("./assets/image/background3.jpg");
   height: 40rem;
@@ -160,6 +163,10 @@ TopMenu {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
+}
+#letters {
+  position: absolute;
+  top: 280rem;
 }
 Footer {
   position: absolute;
@@ -238,9 +245,12 @@ Footer {
 }
 </style>
 <style>
-html { font-size: 1vh; }
+html {
+  font-size: 1vh;
+  width:100%; overflow-x:hidden;
+}
 body {
-  background: url("assets/image/bg.009bdf28.png");
+  background: url("assets/image/bg.009bdf28.png") fixed;
   background-size: cover;
 }
 </style>

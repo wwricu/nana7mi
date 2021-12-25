@@ -47,12 +47,23 @@ export default {
   props: {
     Display: Boolean,
     title_text: String,
-    video_index: Number
+    video_index: Number,
   },
   methods: {
     showPlayer(index) {
       this.active_player=index;
-    }
+    },
+    handleClick(e) {
+      if (e.target.className.indexOf('box-content') === -1
+       && e.target.className.indexOf('content') === -1
+       && e.target.className.indexOf('box') === -1) {
+        /* click out of box */
+        this.active_player=null;
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener('click', this.handleClick);
   },
   data() {
     return {
@@ -122,7 +133,7 @@ export default {
 @import url("../assets/css/bootstrap-grid.min.css");
 @import url("https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css");
 .el-divider {
-  /*border-color: #AAAAAA;*/
+  border-color: black;
 }
 #title {
   width: 100%;
@@ -300,6 +311,8 @@ export default {
   }
   .container { width: 3000px; }
 }
+</style>
+<style>
 /* animations */
 .upIn {
   animation: upIn 1s ease;
