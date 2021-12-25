@@ -8,6 +8,7 @@
 <!--  <ScrollBar id="scroll1" v-if="coverInit" :activeStep="scrollStep"></ScrollBar>-->
   <Video v-if="coverInit" id="origin"
          :Display="scrollTop > originShow && scrollTop < originHide"
+         :title_text="'原创作品'"
          :video_index="0"
   ></Video>
   <div v-if="coverInit" id="image2" class="fixed_image"
@@ -15,6 +16,7 @@
   ></div>
   <Video v-if="coverInit" id="amateur"
          :Display="scrollTop > amateurShow && scrollTop < amateurHide"
+         :title_text="'二创作品'"
          :video_index="1"
   ></Video>
   <div v-if="coverInit" id="image3" class="fixed_image"

@@ -1,13 +1,15 @@
 <template>
-<div class="video">
+<div class="video" :class="{'plainIn':Display==true,'plainOut':Display==false}">
+  <div id="title">{{ title_text }}</div>
+  <el-divider>
+    <el-icon><star-filled/></el-icon>
+  </el-divider>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-lg-3"
-           :class="{'plainIn':Display==true,'plainOut':Display==false}"
            v-for="(video,i) in video_lists[video_index]" :key="i"
            @click="showPlayer(i)"
       >
-<!--        <div :class="{'box':i != active_player}" >-->
         <div class="box" :class="{'disable_animation':i == active_player}">
           <iframe :id="'player'+i" v-show="i == active_player"
                   :src="'//player.bilibili.com/player.html?bvid=' + video.bv"
@@ -43,6 +45,7 @@ export default {
   name: "Video",
   props: {
     Display: Boolean,
+    title_text: String,
     video_index: Number
   },
   methods: {
@@ -117,7 +120,12 @@ export default {
 @import url("../assets/css/reset.css");
 @import url("../assets/css/bootstrap-grid.min.css");
 @import url("https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
+#title {
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
+}
 .video {
   padding: 2em 0;
 }
