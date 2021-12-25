@@ -1,5 +1,6 @@
 <template>
 <div class="video" :class="{'plainIn':Display==true,'plainOut':Display==false}">
+<!--  <el-divider content-position="left" style="font-size: 5rem;">{{ title_text }}</el-divider>-->
   <div id="title">{{ title_text }}</div>
   <el-divider>
     <el-icon><star-filled/></el-icon>
@@ -120,6 +121,9 @@ export default {
 @import url("../assets/css/reset.css");
 @import url("../assets/css/bootstrap-grid.min.css");
 @import url("https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css");
+.el-divider {
+  /*border-color: #AAAAAA;*/
+}
 #title {
   width: 100%;
   text-align: center;

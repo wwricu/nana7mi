@@ -4,8 +4,6 @@
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
   <TopMenu></TopMenu>
   <Home v-if="coverInit" :Display="scrollTop <= 50"></Home>
-<!--  <div id="background1"></div>-->
-<!--  <ScrollBar id="scroll1" v-if="coverInit" :activeStep="scrollStep"></ScrollBar>-->
   <Video v-if="coverInit" id="origin"
          :Display="scrollTop > originShow && scrollTop < originHide"
          :title_text="'原创作品'"
@@ -30,15 +28,12 @@ import Home from "@/components/Home";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
 import TopMenu from "@/components/TopMenu";
-// import ScrollBar from "@/components/ScrollBar";
 
 export default {
   name: 'App',
   data() {
     return {
-      origin_active: false,
       coverInit: false,
-      scrollStep: 1,
       ratio: 2,
       positionY: 0,
       Y: 0,
@@ -54,42 +49,34 @@ export default {
     }
   },
   methods: {
-    goBV(BV) {
-      window.open("https://www.bilibili.com/video/" + BV);
-    },
     handleScroll: function() {
       this.scrollTop =
           (window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop) / this.fontSize; // rem
       this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
-      this.positionY = this.Y - this.scrollTop * this.ratio; // 原始高度-滚动距离*视差系数
+      this.positionY = this.Y - this.scrollTop * this.ratio;
       if (window.innerHeight > 1600 && window.innerWidth < 1200) {
         /* portable device with two column video */
-        this.originShow = 50; // rem
-        this.originHide = 130; // rem
-        this.amateurShow = 130; // rem
-        this.amateurHide = 210; // rem
+        this.originShow = 50;
+        this.originHide = 130;
+        this.amateurShow = 130;
+        this.amateurHide = 210;
         this.image3Pos = 170;
       } else if (window.innerWidth < 1200) {
         /* desktop device with two column video */
-        this.originShow = 50; // rem
-        this.originHide = 250; // rem
-        this.amateurShow = 250; // rem
-        this.amateurHide = 400; // rem
+        this.originShow = 50;
+        this.originHide = 250;
+        this.amateurShow = 250;
+        this.amateurHide = 400;
         this.image3Pos = 400;
       } else {
-        this.originShow = 90; // rem
-        this.originHide = 160; // rem
-        this.amateurShow = 210; // rem
-        this.amateurHide = 290; // rem
+        /* normal resolution */
+        this.originShow = 80; // rem
+        this.originHide = 170;
+        this.amateurShow = 190;
+        this.amateurHide = 280;
         this.image3Pos = 220;
-      }
-
-      if (this.scrollTop >= this.amateurShow) {
-        this.scrollStep = 2;
-      } else {
-        this.scrollStep = 1;
       }
     },
     handleResize() {
@@ -107,15 +94,11 @@ export default {
     this.handleResize();
     // this.handleScroll(); // this caused bugs in menu
   },
-  updated() {
-
-  },
   components: {
     Footer,
     Home,
     Video,
     TopMenu,
-    // ScrollBar
   }
 }
 </script>
@@ -152,32 +135,16 @@ export default {
 TopMenu {
   box-shadow: 10px 10px 5px #888888;
 }
-#background1 {
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  height: 105rem;
-  width: 100%;
-  background-color: black;
-  opacity: 0.8;
-}
 #image2 {
   background-image: url("./assets/image/background3.jpg");
   height: 40rem;
   top: 100rem;
   border: 5px #000;
 }
-#scroll1 {
-  position: absolute;
-  top: 160rem;
-  left: 10%;
-  z-index: -2;
-}
 #origin {
   position: absolute;
   z-index: 1;
-  top: 160rem;
-  /* 1800 - (1080 + 480) == 240 */
+  top: 150rem;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -189,8 +156,7 @@ TopMenu {
 }
 #amateur {
   position: absolute;
-  top: 280rem;
-  /* 2350 + 540 + 240 == 3000 */
+  top: 260rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
