@@ -3,6 +3,7 @@
   <div id="image1"  :class="{'upOut':coverInit==true}"></div>
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
   <TopMenu></TopMenu>
+  <Background :Display="scrollTop < amateurShow"></Background>
   <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
          :Display="(scrollTop > originShow && scrollTop < originHide)"
@@ -30,6 +31,7 @@ import Video from "@/components/Video";
 import Footer from "@/components/Footer";
 import TopMenu from "@/components/TopMenu";
 import JumpLetters from "@/components/JumpLetters";
+import Background from "@/components/Background";
 
 export default {
   name: 'App',
@@ -105,7 +107,8 @@ export default {
     Home,
     Video,
     TopMenu,
-    JumpLetters
+    JumpLetters,
+    Background
   }
 }
 </script>
@@ -138,6 +141,10 @@ export default {
   color: white;
   background-color: #000;
 }
+Background {
+  top: 10rem;
+  right: 30rem
+}
 #image2 {
   background-image: url("./assets/image/background3.jpg");
   height: 40rem;
@@ -166,7 +173,8 @@ export default {
 }
 #letters {
   position: absolute;
-  top: 280rem;
+  top: 270rem;
+  /*bottom: 50rem;*/
 }
 Footer {
   position: absolute;
