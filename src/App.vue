@@ -3,7 +3,9 @@
   <div id="image1"  :class="{'upOut':coverInit==true}"></div>
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
   <TopMenu></TopMenu>
-  <Background :Display="scrollTop < amateurShow"></Background>
+  <Background
+      :color_style="(scrollTop>amateurHide?'3':scrollTop>amateurShow?'2':scrollTop>originShow?'1':'0')"
+  ></Background>
   <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
          :Display="(scrollTop > originShow && scrollTop < originHide)"
@@ -21,7 +23,7 @@
   <div v-if="coverInit" id="image3" class="fixed_image"
        :style="{'background-position-y':positionY+image3Pos+'rem'}"
   ></div>
-  <JumpLetters id="letters" :Display="scrollTop+clientHeight>=scrollHeight" v-if="coverInit"></JumpLetters>
+<!--  <JumpLetters id="letters" :Display="scrollTop+clientHeight>=scrollHeight" v-if="coverInit"></JumpLetters>-->
   <Footer v-if="coverInit" ></Footer>
 </template>
 
@@ -30,7 +32,7 @@ import Home from "@/components/Home";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
 import TopMenu from "@/components/TopMenu";
-import JumpLetters from "@/components/JumpLetters";
+// import JumpLetters from "@/components/JumpLetters";
 import Background from "@/components/Background";
 
 export default {
@@ -107,7 +109,7 @@ export default {
     Home,
     Video,
     TopMenu,
-    JumpLetters,
+    // JumpLetters,
     Background
   }
 }

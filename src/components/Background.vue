@@ -1,61 +1,113 @@
 <template>
-  <div class="wrapper" :class="Display?'plainIn':'plainOut'">
+  <div class="container"
+       :class="color_style==1?'style1':color_style==2?'style2':color_style==3?'style2 jump':''">
     <span>N</span>
     <span>A</span>
     <span>N</span>
     <span>A</span>
     <span>7</span>
     <span>M</span>
-    <span>I</span>
+    <span>{{ color_style }}</span>
   </div>
 </template>
-
 <script>
 export default {
   name: "Background",
   props: {
-    Display: Boolean
+    Display: Boolean,
+    color_style: Number(0)
   }
 }
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
-.wrapper {
+
+.container {
   width: 100%;
   text-align: center;
+  position: fixed;
+  z-index: -10;
+  opacity: 0.6;
+  background-color: transparent;
+}
+.container span {
   -webkit-text-stroke-width: 1.25px;
   -webkit-text-stroke-color: #000;
   font-size: 20rem;
   text-shadow: 0 0px #f3c623, 0 0px #f2aaaa;
   transform: translate(0, 100%) rotate(4deg);
   display: inline-block;
-  position: fixed;
-  z-index: -10;
-  opacity: 0.6;
   font-family: "Titan One", cursive;
-  background-color: transparent;
+  color: white;
 }
-
-.wrapper span:nth-child(1) {
-  color: #996258;
-}
-.wrapper span:nth-child(2) {
-  color: #dcdcdc;
-}
-.wrapper span:nth-child(3) {
-  color: #996258;
-}
-.wrapper span:nth-child(4) {
-  color: #dcdcdc;
-}
-.wrapper span:nth-child(5) {
+.container span:nth-child(5) {
   color: #4365ED;
 }
-.wrapper span:nth-child(6) {
+.style1 span:nth-child(1) {
+  color: #8adaed;
+}
+.style1 span:nth-child(2) {
+  color: #75d6be;
+}
+.style1 span:nth-child(3) {
+  color: #8adaed;
+}
+.style1 span:nth-child(4) {
+  color: #75d6be;
+}
+.style1 span:nth-child(5) {
+  color: #4365ED;
+}
+.style1 span:nth-child(6) {
+  color: #ffca67;
+}
+.style1 span:nth-child(7) {
+  color: #ffb9b8;
+}
+
+.style2 span:nth-child(1) {
+  animation-delay: 120ms;
+  color: #996258;
+}
+.style2 span:nth-child(2) {
+  animation-delay: 240ms;
+  color: #dcdcdc;
+}
+.style2 span:nth-child(3) {
+  animation-delay: 360ms;
+  color: #996258;
+}
+.style2 span:nth-child(4) {
+  animation-delay: 480ms;
+  color: #dcdcdc;
+}
+.style2 span:nth-child(5) {
+  animation-delay: 600ms;
+  color: #4365ED;
+}
+.style2 span:nth-child(6) {
+  animation-delay: 720ms;
   color: #b42e2a;
 }
-.wrapper span:nth-child(7) {
+.style2 span:nth-child(7) {
+  animation-delay: 840ms;
   color: #383838;
+}
+
+.jump span {
+  animation: jump 2s ease-in-out;
+}
+@keyframes jump {
+  33% {
+    text-shadow: 0 60px #f37121, 0 150px #f2aaaa;
+  }
+  50% {
+    transform: translate(0, 0) rotate(-4deg);
+    text-shadow: 0 0px #8fc0a9, 0 0px #84a9ac;
+  }
+  66.67% {
+    text-shadow: 0 -60px #d54062, 0 -150px #8fc0a9;
+  }
 }
 </style>
