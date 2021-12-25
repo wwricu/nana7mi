@@ -64,13 +64,13 @@
     </el-menu>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {
     const activeIndex = ref('0');
-    const handleSelect = (key: String, keyPath: String) => {
+    const handleSelect = (key, keyPath) => {
       console.log(key, keyPath)
     };
     return {

@@ -6,10 +6,20 @@
   <Home v-if="coverInit" :Display="scrollTop <= 50"></Home>
 <!--  <div id="background1"></div>-->
 <!--  <ScrollBar id="scroll1" v-if="coverInit" :activeStep="scrollStep"></ScrollBar>-->
-  <Video v-if="coverInit" id="origin" :Display="scrollTop > originShow && scrollTop < originHide"></Video>
-  <div v-if="coverInit" id="image2" class="fixed_image" :style="{'background-position-y':positionY+'rem'}"></div>
-  <Video v-if="coverInit" id="amateur" :Display="scrollTop > amateurShow && scrollTop < amateurHide"></Video>
-  <div v-if="coverInit" id="image3" class="fixed_image" :style="{'background-position-y':positionY+image3Pos+'rem'}"></div>
+  <Video v-if="coverInit" id="origin"
+         :Display="scrollTop > originShow && scrollTop < originHide"
+         :video_index="0"
+  ></Video>
+  <div v-if="coverInit" id="image2" class="fixed_image"
+       :style="{'background-position-y':positionY+'rem'}"
+  ></div>
+  <Video v-if="coverInit" id="amateur"
+         :Display="scrollTop > amateurShow && scrollTop < amateurHide"
+         :video_index="1"
+  ></Video>
+  <div v-if="coverInit" id="image3" class="fixed_image"
+       :style="{'background-position-y':positionY+image3Pos+'rem'}"
+  ></div>
   <Footer v-if="coverInit" ></Footer>
 </template>
 
@@ -25,13 +35,6 @@ export default {
   data() {
     return {
       origin_active: false,
-      origin_bv_list: [
-        'BV1vJ411B7ng', // 偶像宣言
-        'BV1Wq4y1g7SW', // 谁是喝奶王
-        'BV18q4y1z7Vv', // I wanna kill u
-        'BV1yf4y137XH', // myself
-        'BV1y4411P7Wg' // introduction
-      ],
       coverInit: false,
       scrollStep: 1,
       ratio: 2,

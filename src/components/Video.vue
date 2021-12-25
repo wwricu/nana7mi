@@ -1,63 +1,34 @@
 <template>
-<div class="origin">
+<div class="video">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
-        <div class="box">
-          <img src="../assets/image/BV1vJ411B7ng.jpg" alt="">
-          <div class="box-content">
+      <div class="col-md-6 col-sm-6 col-lg-3"
+           :class="{'plainIn':Display==true,'plainOut':Display==false}"
+           v-for="(video,i) in video_lists[video_index]" :key="i"
+           @click="showPlayer(i)"
+      >
+<!--        <div :class="{'box':i != active_player}" >-->
+        <div class="box" :class="{'disable_animation':i == active_player}">
+          <iframe :id="'player'+i" v-show="i == active_player"
+                  :src="'//player.bilibili.com/player.html?bvid=' + video.bv"
+                  scrolling="no" border="0" frameborder="no"
+                  class="box-content"
+                  framespacing="0" allowfullscreen="true">
+          </iframe>
+          <img :src="video.img" v-show="i != active_player">
+          <img src="../assets/image/placeholder.png" v-show="i == active_player">
+          <div class="box-content" v-show="i != active_player">
             <div class="content">
-              <span class="post">Web developer</span>
-              <h3 class="title">Steve Thomas</h3>
+              <span class="post">{{ video.post }}</span>
+              <h3 class="title">{{ video.title }}</h3>
             </div>
             <ul class="icon">
-              <li><a href="#"><i class="fa fa-search"></i></a></li>
-              <li><a href="#"><i class="fa fa-link"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
-        <div class="box">
-          <img src="../assets/image/BV1y4411P7Wg.jpg" alt="">
-          <div class="box-content">
-            <div class="content">
-              <span class="post">Web designer</span>
-              <h3 class="title">Kristina</h3>
-            </div>
-            <ul class="icon">
-              <li><a href="#"><i class="fa fa-search"></i></a></li>
-              <li><a href="#"><i class="fa fa-link"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
-        <div class="box">
-          <img src="../assets/image/BV1yf4y137XH.jpg" alt="">
-          <div class="box-content">
-            <div class="content">
-              <span class="post">Web designer</span>
-              <h3 class="title">Williamson</h3>
-            </div>
-            <ul class="icon">
-              <li><a href="#"><i class="fa fa-search"></i></a></li>
-              <li><a href="#"><i class="fa fa-link"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-lg-3" :class="{'plainIn':Display==true,'plainOut':Display==false}">
-        <div class="box">
-          <img src="../assets/image/BV18q4y1z7Vv.jpg" alt="">
-          <div class="box-content">
-            <div class="content">
-              <span class="post">Web designer</span>
-              <h3 class="title">Williamson</h3>
-            </div>
-            <ul class="icon">
-              <li><a href="#"><i class="fa fa-search"></i></a></li>
-              <li><a href="#"><i class="fa fa-link"></i></a></li>
+<!--              <li><a href="#"><i class="fa fa-search"></i></a></li>-->
+              <li>
+                <a :href="video_prefix + video.bv" target="_blank">
+                  <i class="fa fa-link"></i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -72,6 +43,72 @@ export default {
   name: "Video",
   props: {
     Display: Boolean,
+    video_index: Number
+  },
+  methods: {
+    showPlayer(index) {
+      this.active_player=index;
+    }
+  },
+  data() {
+    return {
+      active_player: Number,
+      video_prefix: 'https://www.bilibili.com/video/',
+      video_lists: [
+        [
+          {
+            bv:'BV1vJ411B7ng',
+            img: require('../assets/image/BV1vJ411B7ng.jpg'),
+            title: "【七海】七海的偶像宣言／私、アイドル宣言【手书PV】",
+            post: ""
+          },
+          {
+            bv:'BV18q4y1z7Vv',
+            img: require('../assets/image/BV18q4y1z7Vv.jpg'),
+            title: "I wanna kill you",
+            post: ""
+          },
+          {
+            bv:'BV1yf4y137XH',
+            img: require('../assets/image/BV1yf4y137XH.jpg'),
+            title: "【七海】我。/Myself -Miwake-【原创曲】",
+            post: ""
+          },
+          {
+            bv:'BV1y4411P7Wg',
+            img: require('../assets/image/BV1y4411P7Wg.jpg'),
+            title: "【VUP七海】震惊！！鲨鱼居然会说话？！",
+            post: ""
+          },
+        ],
+        [
+          {
+            bv:'BV1wo4y1X7Tk',
+            img: require('../assets/image/BV1wo4y1X7Tk.jpg'),
+            title: "【海子姐】ybb小火车",
+            post: "作者: dRa核桃"
+          },
+          {
+            bv:'BV1gA411P7ir',
+            img: require('../assets/image/BV1gA411P7ir.jpg'),
+            title: "Ring Ring Ring",
+            post: "作者: 沈默沈默"
+          },
+          {
+            bv:'BV1cv411w7ky',
+            img: require('../assets/image/BV1cv411w7ky.jpg'),
+            title: "【棍海】猴鲨爱情故事（群青 cover:YOASOBI）",
+            post: "作者: 四方三画"
+          },
+          {
+            bv:'BV1t34y1D7SX',
+            img: require('../assets/image/BV1t34y1D7SX.jpg'),
+            title: "shape of ybb",
+            post: "作者: AT-15A"
+          },
+        ]
+    ],
+  }
   }
 }
 </script>
@@ -80,7 +117,8 @@ export default {
 @import url("../assets/css/reset.css");
 @import url("../assets/css/bootstrap-grid.min.css");
 @import url("https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css");
-.origin {
+
+.video {
   padding: 2em 0;
 }
 :root {
@@ -93,8 +131,11 @@ export default {
   position: relative;
   overflow: hidden;
   box-shadow: 10px 10px 5px #888888;
-  border: 2px solid var(--el-border-color-base);;
+  border: 2px solid var(--el-border-color-base);
   /*box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);*/
+}
+.box:hover {
+  cursor: pointer;
 }
 .box:before,
 .box:after,
@@ -114,23 +155,29 @@ export default {
 .box:hover:before,
 .box:hover:after,
 .box:hover .box-content:before,
-.box:hover .box-content:after{
+.box:hover .box-content:after {
   transform: translateY(0);
 }
+.disable_animation:hover:before,
+.disable_animation:hover:after,
+.disable_animation:hover .box-content:before,
+.disable_animation:hover .box-content:after {
+  transform: translateY(-100%);
+}
 .box:after{ left: 25%; }
-.box .box-content:before{ left: 50%; }
-.box .box-content:after{ left: 75%; }
-.box:hover:before{ transition-delay: 0.225s; }
-.box:hover:after{ transition-delay: 0.075s; }
-.box:hover .box-content:before{ transition-delay: 0.15s; }
-.box:hover .box-content:after{ transition-delay: 0s; }
-.box img{
+.box .box-content:before { left: 50%; }
+.box .box-content:after { left: 75%; }
+.box:hover:before { transition-delay: 0.225s; }
+.box:hover:after { transition-delay: 0.075s; }
+.box:hover .box-content:before { transition-delay: 0.15s; }
+.box:hover .box-content:after { transition-delay: 0s; }
+.box img {
   width: 100%;
   height: auto;
   transition: all 0.3s ease 0s;
 }
-.box:hover img{ filter: grayscale(100%); }
-.box .box-content{
+.box:hover img { filter: grayscale(100%); }
+.box .box-content {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -138,7 +185,7 @@ export default {
   left: 0;
   transition: all 0.2s;
 }
-.content{
+.content {
   width: 100%;
   padding: 7px 0;
   opacity: 0;
@@ -152,7 +199,7 @@ export default {
   opacity: 1;
   bottom: 5px;
 }
-.box .title{
+.box .title {
   color:#fff;
   font-size: 25px;
   font-weight: 500;
@@ -160,7 +207,7 @@ export default {
   text-transform: uppercase;
   margin: 0;
 }
-.box .post{
+.box .post {
   color: var(--main-color);
   font-size: 16px;
   font-style: italic;
@@ -169,7 +216,7 @@ export default {
   margin-bottom: 10px;
   display: block;
 }
-.box .icon{
+.box .icon {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -180,16 +227,16 @@ export default {
   z-index: 2;
   transition: all 0.5s ease 0.3s;
 }
-.box .icon li{
+.box .icon li {
   opacity: 0;
   transform: scale(0) rotate(360deg);
   transition: all 400ms;
 }
-.box:hover .icon li{
+.box:hover .icon li {
   opacity: 1;
   transform: scale(1) rotate(0);
 }
-.box .icon li a{
+.box .icon li a {
   color: var(--color_1);
   background-color: var(--main-color);
   font-size: 20px;
@@ -202,12 +249,13 @@ export default {
   position: relative;
   transition: all 0.3s;
 }
-.box .icon li a:hover{
+.box .icon li a:hover {
   text-decoration: none;
   color: var(--main-color);
   background-color: var(--color_1);
   border-radius: 0 20px 0 20px;
 }
+
 [class*="col-"] {
   padding: 10px;
 }
