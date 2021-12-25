@@ -7,7 +7,7 @@
     <span>A</span>
     <span>7</span>
     <span>M</span>
-    <span>{{ color_style }}</span>
+    <span>I</span>
   </div>
 </template>
 <script>
@@ -24,6 +24,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
 
 .container {
+  /*top: -10rem;*/
   width: 100%;
   text-align: center;
   position: fixed;
@@ -96,18 +97,27 @@ export default {
 }
 
 .jump span {
-  animation: jump 2s ease-in-out;
+  animation: jump 1s ease-in-out;
 }
 @keyframes jump {
   33% {
-    text-shadow: 0 60px #f37121, 0 150px #f2aaaa;
+    text-shadow: 0 30px #f37121, 0 150px #f2aaaa;
   }
   50% {
     transform: translate(0, 0) rotate(-4deg);
     text-shadow: 0 0px #8fc0a9, 0 0px #84a9ac;
   }
   66.67% {
-    text-shadow: 0 -60px #d54062, 0 -150px #8fc0a9;
+    text-shadow: 0 -30px #d54062, 0 -150px #8fc0a9;
   }
+}
+@media only screen and (max-width:1700px) {
+  .container span { font-size: 15rem; }
+}
+@media only screen and (max-width:1300px) {
+  .container span { font-size: 10rem; }
+}
+@media only screen and (max-width:900px) {
+  .container span { font-size: 5rem; }
 }
 </style>

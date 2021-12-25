@@ -40,7 +40,7 @@ export default {
   height: 70rem;
   width: 50rem;
   background-color: white; /*#4365ED*/
-  opacity: 0.75;
+  opacity: 0.8;
   text-align: center;
   padding-top: 15rem;
   padding-left: 6rem;
@@ -60,6 +60,7 @@ export default {
   width: 50rem;
   background: url("../assets/image/kachiyu_.jpg") no-repeat fixed center 0;
   background-size: cover;
+  opacity: 0.9;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
   border-radius: 2rem;
 }
@@ -85,13 +86,13 @@ export default {
   }
   to {
     transform: translateX(-120%);
-    opacity: 1;
+    opacity: 0.8;
   }
 }
 @keyframes leftOut {
   from {
     transform: translateX(-120%);
-    opacity: 1;
+    opacity: 0.8;
   }
   to {
     transform: translateX(-250%);
@@ -105,13 +106,13 @@ export default {
   }
   to {
     transform: translateX(120%);
-    opacity: 1;
+    opacity: 0.9;
   }
 }
 @keyframes rightOut {
   from {
     transform: translateX(120%);
-    opacity: 1;
+    opacity: 0.9;
   }
   to {
     transform: translateX(250%);
@@ -142,13 +143,13 @@ export default {
     }
     to {
       transform: translateX(0);
-      opacity: 1;
+      opacity: 0.8;
     }
   }
   @keyframes leftOut {
     from {
       transform: translateX(-100%);
-      opacity: 1;
+      opacity: 0.8;
     }
     to {
       transform: translateX(0);
@@ -162,13 +163,13 @@ export default {
     }
     to {
       transform: translateX(0);
-      opacity: 1;
+      opacity: 0.9;
     }
   }
   @keyframes rightOut {
     from {
       transform: translateX(0);
-      opacity: 1;
+      opacity: 0.9;
     }
     to {
       transform: translateX(100%);

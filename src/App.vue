@@ -4,7 +4,7 @@
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
   <TopMenu></TopMenu>
   <Background
-      :color_style="(scrollTop>amateurHide?'3':scrollTop>amateurShow?'2':scrollTop>originShow?'1':'0')"
+      :color_style="(scrollTop+clientHeight>scrollHeight?'3':scrollTop>amateurShow?'2':scrollTop>originShow?'1':'0')"
   ></Background>
   <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
@@ -16,7 +16,7 @@
        :style="{'background-position-y':positionY+'rem'}"
   ></div>
   <Video v-if="coverInit" id="amateur"
-         :Display="(scrollTop > amateurShow && scrollTop < amateurHide && scrollTop+clientHeight<scrollHeight)"
+         :Display="(scrollTop>amateurShow && scrollTop<amateurHide && scrollTop+clientHeight<scrollHeight)"
          :title_text="'二创作品'"
          :video_index="1"
   ></Video>
@@ -142,10 +142,6 @@ export default {
   text-align: center;
   color: white;
   background-color: #000;
-}
-Background {
-  top: 10rem;
-  right: 30rem
 }
 #image2 {
   background-image: url("./assets/image/background3.jpg");
