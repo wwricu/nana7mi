@@ -12,7 +12,7 @@
            @click="showPlayer(i)"
       >
         <div class="box" :class="{'disable_animation':i == active_player}">
-          <iframe :id="'player'+i" v-show="i == active_player"
+          <iframe :id="'player'+i" v-if="i == active_player"
                   :src="'//player.bilibili.com/player.html?bvid=' + video.bv"
                   scrolling="no" border="0" frameborder="no"
                   class="box-content"

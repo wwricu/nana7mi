@@ -23,7 +23,7 @@
   <div v-if="coverInit" id="image3" class="fixed_image"
        :style="{'background-position-y':positionY+image3Pos+'rem'}"
   ></div>
-<!--  <JumpLetters id="letters" :Display="scrollTop+clientHeight>=scrollHeight" v-if="coverInit"></JumpLetters>-->
+  <el-backtop :visibility-height="amateurShow * fontSize"/>
   <Footer v-if="coverInit" ></Footer>
 </template>
 
@@ -32,7 +32,6 @@ import Home from "@/components/Home";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
 import TopMenu from "@/components/TopMenu";
-// import JumpLetters from "@/components/JumpLetters";
 import Background from "@/components/Background";
 
 export default {

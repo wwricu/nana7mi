@@ -9,10 +9,10 @@
     >
       <el-sub-menu index="1">
         <template #title>相关链接</template>
-        <el-menu-item index="1-1">VirtuaReal</el-menu-item>
-        <el-menu-item index="1-2">Nana7mi-直播间</el-menu-item>
-        <el-menu-item index="1-3">Nana7mi-个人主页</el-menu-item>
-        <el-menu-item index="1-3">Nana7mi-萌娘百科</el-menu-item>
+        <el-menu-item index="1-1" @click="clickHandle($event)">VirtuaReal</el-menu-item>
+        <el-menu-item index="1-2" @click="clickHandle($event)">Nana7mi-直播间</el-menu-item>
+        <el-menu-item index="1-3" @click="clickHandle($event)">Nana7mi-个人主页</el-menu-item>
+        <el-menu-item index="1-4" @click="clickHandle($event)">Nana7mi-萌娘百科</el-menu-item>
       </el-sub-menu>
       <el-popover
           placement="bottom"
@@ -70,12 +70,23 @@ import { defineComponent, ref } from 'vue'
 export default defineComponent({
   setup() {
     const activeIndex = ref('0');
+    const linkList = {
+      '1-1': 'https://vrp.live/member/nanami',
+      '1-2': 'https://live.bilibili.com/21452505',
+      '1-3': 'https://space.bilibili.com/434334701',
+      '1-4': 'https://zh.moegirl.org.cn/七海(虚拟UP主)'
+    };
     const handleSelect = (key, keyPath) => {
-      console.log(key, keyPath)
+      console.log(key, keyPath);
+    };
+    const clickHandle = (e) => {
+      // console.log(e.index);
+      window.open(linkList[e.index], "_blank");
     };
     return {
       activeIndex,
       handleSelect,
+      clickHandle,
     }
   },
 })
