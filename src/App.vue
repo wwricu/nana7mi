@@ -113,7 +113,7 @@ export default {
         this.image3Pos = 400;
 
         // this.backgroundStyle1 = 80;
-        this.backgroundStyle2 = 190;
+        this.backgroundStyle2 = 280;
       } else {
         /* Ordinary resolution (large screen) */
         this.originShow = 80; // rem
