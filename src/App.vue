@@ -1,10 +1,10 @@
 <template>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <div id="image1"  :class="{'upOut':coverInit==true}"></div>
-  <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit==true}">原来的首页</div>
+  <div id="image1"  :class="{'upOut':coverInit===true}"></div>
+  <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit===true}">原来的首页</div>
   <TopMenu></TopMenu>
   <Background
-      :color_style="(scrollTop+clientHeight>scrollHeight?'3':scrollTop>amateurShow?'2':scrollTop>originShow?'1':'0')"
+      :color_style="(scrollTop+clientHeight>scrollHeight?3:scrollTop>amateurShow?2:scrollTop>originShow?1:0)"
   ></Background>
   <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
@@ -23,7 +23,7 @@
   <div v-if="coverInit" id="image3" class="fixed_image"
        :style="{'background-position-y':positionY+image3Pos+'rem'}"
   ></div>
-  <el-backtop :visibility-height="amateurShow * fontSize"/>
+  <el-backtop :visibility-height="originHide * fontSize"/>
   <Footer v-if="coverInit" ></Footer>
 </template>
 
@@ -52,13 +52,16 @@ export default {
       amateurHide: 290, // rem
       image3Pos: 220,
       hidePlayer: true,
+
+      homeDisplay: Boolean(true),
+      originDisplay: Boolean(true),
+      amateurDisplay: Boolean(true),
     }
   },
   methods: {
     handleScroll: function() {
       this.scrollTop =
-          (window.pageYOffset ||
-          document.documentElement.scrollTop ||
+          (document.documentElement.scrollTop ||
           document.body.scrollTop) / this.fontSize; // rem
       this.clientHeight = document.documentElement.clientHeight / this.fontSize; // visible height
       this.scrollHeight = Math.floor(document.documentElement.scrollHeight / this.fontSize); // total height
@@ -167,11 +170,6 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-}
-#letters {
-  position: absolute;
-  top: 270rem;
-  /*bottom: 50rem;*/
 }
 Footer {
   position: absolute;

@@ -1,6 +1,6 @@
 <template>
-  <div id="image" :class="{'rightIn':Display==true,'rightOut':Display==false}"></div>
-  <el-descriptions id="intro" :class="{'leftIn':Display==true,'leftOut':Display==false}"
+  <div id="image" :class="{'rightIn':Display===true,'rightOut':Display===false}"></div>
+  <el-descriptions id="intro" :class="{'leftIn':Display===true,'leftOut':Display===false}"
                    column=2 title="基本资料">
     <el-descriptions-item label-align="right" align="left" label="本名">七海Nana7mi</el-descriptions-item>
     <el-descriptions-item label-align="right" align="left" label="发色">棕发</el-descriptions-item>
@@ -180,7 +180,6 @@ export default {
 
 @media only screen and (min-height:1400px) and (max-width: 1200px) {
   #intro {
-    height: 70rem;
     width: 50%;
     padding-left: 1rem;
     height: 50rem;

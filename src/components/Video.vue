@@ -1,5 +1,5 @@
 <template>
-<div class="video" :class="{'plainIn':Display==true,'plainOut':Display==false}">
+<div class="video" :class="{'plainIn':Display===true,'plainOut':Display===false}">
 <!--  <el-divider content-position="left" style="font-size: 5rem;">{{ title_text }}</el-divider>-->
   <div id="title">{{ title_text }}</div>
   <el-divider>
@@ -11,16 +11,16 @@
            v-for="(video,i) in video_lists[video_index]" :key="i"
            @click="showPlayer(i)"
       >
-        <div class="box" :class="{'disable_animation':i == active_player}">
-          <iframe :id="'player'+i" v-if="i == active_player"
+        <div class="box" :class="{'disable_animation':i === active_player}">
+          <iframe :id="'player'+i" v-if="i === active_player"
                   :src="'//player.bilibili.com/player.html?bvid=' + video.bv"
                   scrolling="no" border="0" frameborder="no"
                   class="box-content"
                   framespacing="0" allowfullscreen="true">
           </iframe>
-          <img :src="video.img" v-show="i != active_player">
-          <img src="../assets/image/placeholder.png" v-show="i == active_player">
-          <div class="box-content" v-show="i != active_player">
+          <img :src="video.img" v-show="i !== active_player" alt="">
+          <img src="../assets/image/placeholder.png" v-show="i === active_player" alt="">
+          <div class="box-content" v-show="i !== active_player">
             <div class="content">
               <span class="post">{{ video.post }}</span>
               <h3 class="title">{{ video.title }}</h3>
@@ -132,9 +132,6 @@ export default {
 @import url("../assets/css/reset.css");
 @import url("../assets/css/bootstrap-grid.min.css");
 @import url("https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css");
-.el-divider {
-  border-color: black;
-}
 #title {
   width: 100%;
   text-align: center;
@@ -314,20 +311,6 @@ export default {
 </style>
 <style>
 /* animations */
-.upIn {
-  animation: upIn 1s ease;
-}
-.upOut {
-  animation: upOut 1s ease;
-  animation-fill-mode: forwards;
-}
-.downIn {
-  animation: downIn 1s ease;
-}
-.downOut {
-  animation: downOut 1s ease;
-  animation-fill-mode: forwards;
-}
 .plainIn {
   animation: plainIn 1s ease;
 }

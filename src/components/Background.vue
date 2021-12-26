@@ -1,6 +1,6 @@
 <template>
   <div class="container"
-       :class="color_style==1?'style1':color_style==2?'style2':color_style==3?'style2 jump':''">
+       :class="color_style===1?'style1':color_style===2?'style2':color_style===3?'style2 jump':''">
     <span>N</span>
     <span>A</span>
     <span>N</span>
@@ -36,7 +36,7 @@ export default {
   -webkit-text-stroke-width: 1.25px;
   -webkit-text-stroke-color: #000;
   font-size: 20rem;
-  text-shadow: 0 0px #f3c623, 0 0px #f2aaaa;
+  text-shadow: 0 0 #f3c623, 0 0 #f2aaaa;
   transform: translate(0, 100%) rotate(4deg);
   display: inline-block;
   font-family: "Titan One", cursive;
@@ -105,7 +105,7 @@ export default {
   }
   50% {
     transform: translate(0, 0) rotate(-4deg);
-    text-shadow: 0 0px #8fc0a9, 0 0px #84a9ac;
+    text-shadow: 0 0 #8fc0a9, 0 0 #84a9ac;
   }
   66.67% {
     text-shadow: 0 -30px #d54062, 0 -150px #8fc0a9;
