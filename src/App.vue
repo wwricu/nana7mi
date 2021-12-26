@@ -274,7 +274,7 @@ Footer {
     top: 320rem;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   /* Smartphones */
   #image2 {
     top: 120rem;
