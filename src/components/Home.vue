@@ -38,8 +38,8 @@ export default {
   left: 50%;
   /*transform: translateX(-120%);*/
   transform: translateX(-60vmin);
-  height: 70rem;
-  width: 50rem;
+  height: 70vmin;
+  width: 50vmin;
   background-color: white; /*#4365ED*/
   opacity: 0.8;
   text-align: center;
@@ -58,7 +58,7 @@ export default {
   right: 50%;
   /*transform: translateX(120%);*/
   transform: translateX(60vmin);
-  height: 70rem;
+  height: 70vmin;
   width: 50rem;
   background: url("../assets/image/kachiyu_.jpg") no-repeat center center;
   background-size: cover;
@@ -132,13 +132,13 @@ export default {
   /* Video animation fit */
   #intro {
     left: 50%;
-    height: 70rem;
+    height: 70vmin;
     width: 40%;
     transform: translateX(10%);
   }
   #image {
     right: 50%;
-    height: 70rem;
+    height: 70vmin;
     width: 40%;
     transform: translateX(-10%);
   }
@@ -186,17 +186,50 @@ export default {
   }
 }
 
-@media only screen and (min-height:1400px) and (max-width: 1200px) {
+@media only screen and (min-height:1200px) and (max-width: 1200px) {
   #intro {
     width: 50%;
     padding-left: 1rem;
-    height: 50rem;
     font-size: 1rem;
     box-shadow: none;
   }
   #image {
-    height: 50%;
     box-shadow: none;
+  }
+}
+@media only screen and (max-width: 768px) and (min-height:768px) {
+  /* smaller than iPad */
+  #intro {
+    top: 25rem;
+    height: 50rem;
+    width: 50%;
+    transform: translateX(-50%);
+    padding-left: 1vmin;
+    padding-top: 5vmin;
+    height: 50vmin;
+  }
+  #image {
+    display: none;
+  }
+  @keyframes leftIn {
+    from {
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-50%);
+      opacity: 0.8;
+    }
+  }
+  @keyframes leftOut {
+    from {
+      transform: translateX(-50%);
+      opacity: 0.8;
+    }
+    to {
+      transform: translateX(-50%);
+      opacity: 0;
+    }
   }
 }
 </style>
