@@ -71,7 +71,7 @@ export default {
     handleResize() {
       this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
 
-      if ( window.innerWidth < 768) {
+      if (window.innerHeight > 639 && window.innerWidth < 429) {
         /* Portable device with one column video (Smartphones) */
         this.originShow = 50;
         this.originHide = 130;
@@ -94,6 +94,16 @@ export default {
         this.image3Pos = 220;
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 190;
+      } else if (window.innerWidth < 768) {
+        /* Desktop device with one column video (small screen) */
+        this.originShow = 100;
+        this.originHide = 350;
+        this.amateurShow = 300;
+        this.amateurHide = 300;
+        this.image3Pos = 700;
+
+        // this.backgroundStyle1 = 80;
+        this.backgroundStyle2 = 260;
       } else if (window.innerWidth < 1200) {
         /* Desktop device with two column video (medium screen) */
         this.originShow = 50;
@@ -112,8 +122,8 @@ export default {
         this.amateurHide = 280;
         this.image3Pos = 220;
 
-        this.backgroundStyle1 = 80; // rem
-        this.backgroundStyle2 = 190; // rem
+        this.backgroundStyle1 = 80;
+        this.backgroundStyle2 = 190;
       }
     },
     initCover() {
@@ -254,6 +264,19 @@ Footer {
     top: 500rem;
   }
 }
+@media only screen and (max-width: 767px) {
+  /* desktop device with 2 column video */
+  #image3 {
+    height: 50rem;
+    top: 450rem;
+  }
+  #amateur {
+    top: 480rem;
+  }
+  Footer {
+    top: 750rem;
+  }
+}
 @media only screen and (min-height:1023px) and (max-width:1025px) {
   /* iPad */
   #image2 {
@@ -264,27 +287,31 @@ Footer {
     top: 130rem;
   }
   #image3 {
-    height: 20rem;
     top: 220rem;
+    height: 20rem;
   }
   #amateur {
     top: 250rem;
   }
   Footer {
-    top: 320rem;
+    top: 330rem;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 429px) and (min-height: 639px) {
   /* Smartphones */
   #image2 {
     top: 120rem;
     height: 30rem;
   }
   #image3 {
+    top: 300rem;
     height: 20rem;
   }
   #amateur {
     top: 320rem;
+  }
+  Footer {
+    top: 500rem;
   }
 }
 </style>
