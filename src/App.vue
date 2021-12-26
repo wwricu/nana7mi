@@ -1,8 +1,10 @@
 <template>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <div id="image1"  :class="{'upOut':coverInit===true}"></div>
-  <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit===true}">原来的首页</div>
+  <div id="mask1" @click="initCover" @tap="initCover" :class="{'maskUpOut':coverInit===true}">原来的首页</div>
   <TopMenu></TopMenu>
+<!--  <iframe src="//player.bilibili.com/player.html?aid=78090377&bvid=BV1vJ411B7ng&cid=133606284&page=1"-->
+<!--          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>-->
   <Background
       :color_style="(scrollTop+clientHeight>scrollHeight?3:scrollTop>backgroundStyle2?2:scrollTop>backgroundStyle1?1:0)"
   ></Background>

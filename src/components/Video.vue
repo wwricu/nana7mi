@@ -13,13 +13,13 @@
       >
         <div class="box" :class="{'disable_animation':i === active_player}">
           <iframe :id="'player'+i" v-if="i === active_player"
-                  :src="'//player.bilibili.com/player.html?bvid=' + video.bv"
+                  :src="linkPrefix + video.bv"
                   scrolling="no" border="0" frameborder="no"
                   class="box-content"
                   framespacing="0" allowfullscreen="true">
           </iframe>
           <img :src="video.img" v-show="i !== active_player" alt="">
-          <img src="../assets/image/placeholder.png" v-show="i === active_player" alt="">
+          <img src="../assets/image/placeholder.png" class="placeholder" v-show="i === active_player" alt="">
           <div class="box-content" v-show="i !== active_player">
             <div class="content">
               <span class="post">{{ video.post }}</span>
@@ -56,6 +56,7 @@ export default {
     handleClick(e) {
       if (e.target.className.indexOf('box-content') === -1
        && e.target.className.indexOf('content') === -1
+       && e.target.className.indexOf('placeholder') === -1
        && e.target.className.indexOf('box') === -1) {
         /* click out of box */
         this.active_player=null;
@@ -67,30 +68,38 @@ export default {
   },
   data() {
     return {
+      linkPrefix: '//player.bilibili.com/player.html?high_quality=1&bvid=',
       active_player: Number,
-      video_prefix: 'https://www.bilibili.com/video/',
       video_lists: [
         [
           {
+            // av: '78090377',
             bv:'BV1vJ411B7ng',
+            // cv:'133606284',
             img: require('../assets/image/BV1vJ411B7ng.jpg'),
             title: "【七海】七海的偶像宣言／私、アイドル宣言【手书PV】",
             post: ""
           },
           {
+            // av: '592090979',
             bv:'BV18q4y1z7Vv',
+            // cv:'454263865',
             img: require('../assets/image/BV18q4y1z7Vv.jpg'),
             title: "I wanna kill you",
             post: ""
           },
           {
+            // av: '292364428',
             bv:'BV1yf4y137XH',
+            // cv:'388755989',
             img: require('../assets/image/BV1yf4y137XH.jpg'),
             title: "【七海】我。/Myself -Miwake-【原创曲】",
             post: ""
           },
           {
+            // av: '55477079',
             bv:'BV1y4411P7Wg',
+            // cv:'96997789',
             img: require('../assets/image/BV1y4411P7Wg.jpg'),
             title: "【VUP七海】震惊！！鲨鱼居然会说话？！",
             post: ""
@@ -98,25 +107,33 @@ export default {
         ],
         [
           {
+            // av: '376524564',
             bv:'BV1wo4y1X7Tk',
+            // cv:'365010431',
             img: require('../assets/image/BV1wo4y1X7Tk.jpg'),
             title: "【海子姐】ybb小火车",
             post: "作者: dRa核桃"
           },
           {
+            // av: '334616725',
             bv:'BV1gA411P7ir',
+            // cv:'387919612',
             img: require('../assets/image/BV1gA411P7ir.jpg'),
             title: "Ring Ring Ring",
             post: "作者: 沈默沈默"
           },
           {
+            // av: '250375378',
             bv:'BV1cv411w7ky',
+            // cv:'406863730',
             img: require('../assets/image/BV1cv411w7ky.jpg'),
             title: "【棍海】猴鲨爱情故事（群青 cover:YOASOBI）",
             post: "作者: 四方三画"
           },
           {
+            // av: '805760588',
             bv:'BV1t34y1D7SX',
+            // cv:'418850327',
             img: require('../assets/image/BV1t34y1D7SX.jpg'),
             title: "shape of ybb",
             post: "作者: AT-15A"
@@ -137,6 +154,10 @@ export default {
   text-align: center;
   font-size: 4rem;
   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
+}
+.placeholder {
+  position: relative; /* Placeholder covers video players in Chrome */
+  z-index: -999;
 }
 .video {
   padding: 2em 0;
