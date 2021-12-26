@@ -16,7 +16,7 @@
        :style="{'background-position-y':positionY+'rem'}"
   ></div>
   <Video v-if="coverInit" id="amateur"
-         :Display="(scrollTop>amateurShow && scrollTop<amateurHide && scrollTop+clientHeight<scrollHeight)"
+         :Display="(scrollTop>amateurShow && scrollTop+clientHeight<scrollHeight)"
          :title_text="'二创作品'"
          :video_index="1"
   ></Video>
@@ -53,6 +53,9 @@ export default {
       image3Pos: 220,
       hidePlayer: true,
 
+      backgroundStyle1: 100, // rem
+      backgroundStyle2: 210, // rem
+
       homeDisplay: Boolean(true),
       originDisplay: Boolean(true),
       amateurDisplay: Boolean(true),
@@ -68,22 +71,33 @@ export default {
 
       this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio;
-      if (window.innerHeight > 1600 && window.innerWidth < 1200) {
-        /* portable device with two column video */
+      if (window.innerHeight > 768 && window.innerWidth < 768) {
+        /* Portable device with one column video (Smartphones) */
         this.originShow = 50;
         this.originHide = 130;
         this.amateurShow = 130;
         this.amateurHide = 210;
-        this.image3Pos = 170;
+        this.image3Pos = 270;
+      } else if (window.innerHeight > 1023 && window.innerWidth < 1025) {
+        /*
+          Portable device with two column video
+          iPad & iPad mini: 768x1024,
+          iPad Pro: 834x1112 1024x1366,
+        */
+        this.originShow = 50;
+        this.originHide = 130;
+        this.amateurShow = 130;
+        this.amateurHide = 210;
+        this.image3Pos = 220;
       } else if (window.innerWidth < 1200) {
-        /* desktop device with two column video */
+        /* Desktop device with two column video */
         this.originShow = 50;
         this.originHide = 250;
         this.amateurShow = 250;
         this.amateurHide = 400;
         this.image3Pos = 400;
       } else {
-        /* normal resolution */
+        /* Ordinary resolution */
         this.originShow = 80; // rem
         this.originHide = 170;
         this.amateurShow = 190;
@@ -92,7 +106,7 @@ export default {
       }
     },
     handleResize() {
-      this.fontSize = window.innerHeight / 100; // 1vw
+      this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
     },
     initCover() {
       this.coverInit = true;
@@ -173,7 +187,7 @@ export default {
 }
 Footer {
   position: absolute;
-  top: 340rem;
+  top: 300rem;
   width: 100%;
 }
 .fixed_image {
@@ -232,31 +246,44 @@ Footer {
     top: 500rem;
   }
 }
-@media only screen and (min-height:1600px) and (max-width: 1200px) {
-  /* portable device */
+@media only screen and (min-height:1023px) and (max-width:1025px) {
+  /* iPad */
   #image2 {
-    height: 10rem;
+    height: 20rem;
     top: 100rem;
   }
   #origin {
     top: 130rem;
   }
   #image3 {
-    height: 10rem;
-    top: 190rem;
+    height: 20rem;
+    top: 220rem;
   }
   #amateur {
-    top: 210rem;
+    top: 250rem;
   }
   Footer {
-    top: 250rem;
+    top: 320rem;
+  }
+}
+@media only screen and (min-height: 768px) and (max-width: 768px) {
+  /* Smartphones */
+  #image2 {
+    top: 120rem;
+    height: 30rem;
+  }
+  #image3 {
+    height: 20rem;
+  }
+  #amateur {
+    top: 320rem;
   }
 }
 </style>
 <style>
 html {
   /*-webkit-overflow-scrolling: unset;*/
-  font-size: 1vh;
+  font-size: 1vmin;
   width:100%; overflow-x:hidden;
 }
 body {

@@ -30,7 +30,6 @@ export default {
 /*  src: url(https://fonts.gstatic.com/s/titanone/v7/mFTzWbsGxbbS_J5cQcjClDgm-khykw.woff2);*/
 /*}*/
 .container {
-  /*top: -10rem;*/
   width: 100%;
   text-align: center;
   position: fixed;
@@ -41,7 +40,7 @@ export default {
 .container span {
   -webkit-text-stroke-width: 1.25px;
   -webkit-text-stroke-color: #000;
-  font-size: 20rem;
+  font-size: 15rem;
   text-shadow: 0 0 #f3c623, 0 0 #f2aaaa;
   transform: translate(0, 100%) rotate(4deg);
   display: inline-block;
@@ -117,13 +116,14 @@ export default {
     text-shadow: 0 -30px #d54062, 0 -150px #8fc0a9;
   }
 }
-@media only screen and (max-width:1700px) {
-  .container span { font-size: 15rem; }
+
+@media only screen and (max-width: 1200px) {
+  /* desktop device with 2 column video */
 }
-@media only screen and (max-width:1300px) {
-  .container span { font-size: 10rem; }
+@media only screen and (min-height:1023px) and (max-width:1025px) {
+  /* iPad */
 }
-@media only screen and (max-width:900px) {
-  .container span { font-size: 5rem; }
+@media only screen and (min-height: 768px) and (max-width: 768px) {
+  /* Smartphones */
 }
 </style>
