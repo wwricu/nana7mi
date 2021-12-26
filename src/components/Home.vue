@@ -36,7 +36,8 @@ export default {
   z-index: 10;
   top: 15rem;
   left: 50%;
-  transform: translateX(-120%);
+  /*transform: translateX(-120%);*/
+  transform: translateX(-60vmin);
   height: 70rem;
   width: 50rem;
   background-color: white; /*#4365ED*/
@@ -44,7 +45,7 @@ export default {
   text-align: center;
   padding-top: 15rem;
   padding-left: 6rem;
-  font-size: 2rem;
+  font-size: 1vmin;
   /*box-shadow: 10px 10px 5px #888888;*/
   /*box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);*/
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
@@ -55,10 +56,11 @@ export default {
   z-index: 10;
   top: 15rem;
   right: 50%;
-  transform: translateX(120%);
+  /*transform: translateX(120%);*/
+  transform: translateX(60vmin);
   height: 70rem;
   width: 50rem;
-  background: url("../assets/image/kachiyu_.jpg") no-repeat fixed center 0;
+  background: url("../assets/image/kachiyu_.jpg") no-repeat center center;
   background-size: cover;
   opacity: 0.9;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
@@ -81,31 +83,37 @@ export default {
 }
 @keyframes leftIn {
   from {
-    transform: translateX(-250%);
+    /*transform: translateX(-250%);*/
+    transform: translateX(-150vmin);
     opacity: 0;
   }
   to {
-    transform: translateX(-120%);
+    /*transform: translateX(-120%);*/
+    transform: translateX(-60vmin);
     opacity: 0.8;
   }
 }
 @keyframes leftOut {
   from {
-    transform: translateX(-120%);
+    /*transform: translateX(-120%);*/
+    transform: translateX(-60vmin);
     opacity: 0.8;
   }
   to {
-    transform: translateX(-250%);
+    /*transform: translateX(-250%);*/
+    transform: translateX(-150vmin);
     opacity: 0;
   }
 }
 @keyframes rightIn {
   from {
-    transform: translateX(250%);
+    /*transform: translateX(250%);*/
+    transform: translateX(150vmin);
     opacity: 0;
   }
   to {
-    transform: translateX(120%);
+    /*transform: translateX(120%);*/
+    transform: translateX(60vmin);
     opacity: 0.9;
   }
 }
@@ -125,14 +133,14 @@ export default {
   #intro {
     left: 50%;
     height: 70rem;
-    width: 50%;
-    transform: translateX(0);
+    width: 40%;
+    transform: translateX(10%);
   }
   #image {
     right: 50%;
     height: 70rem;
-    width: 50%;
-    transform: translateX(0);
+    width: 40%;
+    transform: translateX(-10%);
   }
 
   /* Animations */
@@ -142,7 +150,7 @@ export default {
       opacity: 0;
     }
     to {
-      transform: translateX(0);
+      transform: translateX(10%);
       opacity: 0.8;
     }
   }
@@ -152,7 +160,7 @@ export default {
       opacity: 0.8;
     }
     to {
-      transform: translateX(0);
+      transform: translateX(10%);
       opacity: 0;
     }
   }
@@ -162,13 +170,13 @@ export default {
       opacity: 0;
     }
     to {
-      transform: translateX(0);
+      transform: translateX(-10%);
       opacity: 0.9;
     }
   }
   @keyframes rightOut {
     from {
-      transform: translateX(0);
+      transform: translateX(-10%);
       opacity: 0.9;
     }
     to {

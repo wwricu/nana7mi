@@ -22,7 +22,13 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
-
+/*@font-face {*/
+/*  !* Chrome compatibility *!*/
+/*  font-family: 'Titan One';*/
+/*  font-style: normal;*/
+/*  font-weight: 400;*/
+/*  src: url(https://fonts.gstatic.com/s/titanone/v7/mFTzWbsGxbbS_J5cQcjClDgm-khykw.woff2);*/
+/*}*/
 .container {
   /*top: -10rem;*/
   width: 100%;

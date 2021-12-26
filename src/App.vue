@@ -60,8 +60,8 @@ export default {
   },
   methods: {
     handleScroll: function() {
-      this.scrollTop =
-          (document.documentElement.scrollTop ||
+      this.scrollTop = (window.pageYOffset ||
+          document.documentElement.scrollTop ||
           document.body.scrollTop) / this.fontSize; // rem
       this.clientHeight = document.documentElement.clientHeight / this.fontSize; // visible height
       this.scrollHeight = Math.floor(document.documentElement.scrollHeight / this.fontSize); // total height
@@ -182,7 +182,13 @@ Footer {
   background-size: cover;
   left: 0;
   width: 100%;
-  z-index: -1;
+  z-index: 1;
+  /*transform: translateZ(999px);*/
+  /*transform: translateZ(100px); !* For iOS compatibility *!*/
+  /*-webkit-transform: translateZ(1000px);!* Safari & Chrome *!*/
+  /*-moz-transform: translateZ(-10px);!* Firefox *!*/
+  /*-ms-transform: translateZ(-10px);!* IE 9 *!*/
+  /*-o-transform: translateZ(-10px);!* Opera *!*/
 }
 .upOut {
   animation: upOut 1s ease;
@@ -249,6 +255,7 @@ Footer {
 </style>
 <style>
 html {
+  /*-webkit-overflow-scrolling: unset;*/
   font-size: 1vh;
   width:100%; overflow-x:hidden;
 }
