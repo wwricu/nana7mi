@@ -45,11 +45,12 @@ export default {
   text-align: center;
   padding-top: 15rem;
   padding-left: 6rem;
-  font-size: 1vmin;
+  font-size: 2vmin;
   /*box-shadow: 10px 10px 5px #888888;*/
   /*box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);*/
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
   border-radius: 2rem;
+  overflow: hidden;
 }
 #image {
   position: absolute;
@@ -206,7 +207,7 @@ export default {
     transform: translateX(-50%);
     padding-left: 1vmin;
     padding-top: 5vmin;
-    height: 50vmin;
+    height: 40%;
   }
   #image {
     display: none;

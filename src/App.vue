@@ -271,10 +271,10 @@ Footer {
     top: 450rem;
   }
   #amateur {
-    top: 480rem;
+    top: 520rem;
   }
   Footer {
-    top: 750rem;
+    top: 820rem;
   }
 }
 @media only screen and (min-height:1023px) and (max-width:1025px) {
