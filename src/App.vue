@@ -4,7 +4,7 @@
   <div id="mask1" @click="initCover()" :class="{'maskUpOut':coverInit===true}">原来的首页</div>
   <TopMenu></TopMenu>
   <Background
-      :color_style="(scrollTop+clientHeight>scrollHeight?3:scrollTop>amateurShow?2:scrollTop>originShow?1:0)"
+      :color_style="(scrollTop+clientHeight>scrollHeight?3:scrollTop>backgroundStyle2?2:scrollTop>backgroundStyle1?1:0)"
   ></Background>
   <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
@@ -53,12 +53,8 @@ export default {
       image3Pos: 220,
       hidePlayer: true,
 
-      backgroundStyle1: 100, // rem
-      backgroundStyle2: 210, // rem
-
-      homeDisplay: Boolean(true),
-      originDisplay: Boolean(true),
-      amateurDisplay: Boolean(true),
+      backgroundStyle1: 75, // rem
+      backgroundStyle2: 190, // rem
     }
   },
   methods: {
@@ -71,16 +67,23 @@ export default {
 
       this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio;
-      if (window.innerHeight > 768 && window.innerWidth < 768) {
+    },
+    handleResize() {
+      this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
+
+      if ( window.innerWidth < 768) {
         /* Portable device with one column video (Smartphones) */
         this.originShow = 50;
         this.originHide = 130;
         this.amateurShow = 130;
         this.amateurHide = 210;
         this.image3Pos = 270;
+
+        // this.backgroundStyle1 = 80;
+        this.backgroundStyle2 = 260;
       } else if (window.innerHeight > 1023 && window.innerWidth < 1025) {
         /*
-          Portable device with two column video
+          Portable device with two column video (iPad)
           iPad & iPad mini: 768x1024,
           iPad Pro: 834x1112 1024x1366,
         */
@@ -89,24 +92,29 @@ export default {
         this.amateurShow = 130;
         this.amateurHide = 210;
         this.image3Pos = 220;
+        // this.backgroundStyle1 = 80;
+        this.backgroundStyle2 = 190;
       } else if (window.innerWidth < 1200) {
-        /* Desktop device with two column video */
+        /* Desktop device with two column video (medium screen) */
         this.originShow = 50;
         this.originHide = 250;
         this.amateurShow = 250;
         this.amateurHide = 400;
         this.image3Pos = 400;
+
+        // this.backgroundStyle1 = 80;
+        this.backgroundStyle2 = 190;
       } else {
-        /* Ordinary resolution */
+        /* Ordinary resolution (large screen) */
         this.originShow = 80; // rem
         this.originHide = 170;
         this.amateurShow = 190;
         this.amateurHide = 280;
         this.image3Pos = 220;
+
+        this.backgroundStyle1 = 80; // rem
+        this.backgroundStyle2 = 190; // rem
       }
-    },
-    handleResize() {
-      this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
     },
     initCover() {
       this.coverInit = true;
@@ -266,7 +274,7 @@ Footer {
     top: 320rem;
   }
 }
-@media only screen and (min-height: 768px) and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   /* Smartphones */
   #image2 {
     top: 120rem;

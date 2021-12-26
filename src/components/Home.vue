@@ -197,7 +197,7 @@ export default {
     box-shadow: none;
   }
 }
-@media only screen and (max-width: 768px) and (min-height:768px) {
+@media only screen and (max-width: 768px) {
   /* smaller than iPad */
   #intro {
     top: 25rem;
