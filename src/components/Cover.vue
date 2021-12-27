@@ -128,13 +128,7 @@ $('.btn-mobile-menu__icon').click(function() {
 /*@import "../assets/css/cover/iconfont.css";*/
 /*@import "../assets/css/cover/onlinewebfonts.css";*/
 
-/* The two scopes below are moved from the source code */
-#panel {
-  background-image: url('../assets/image/cover/background.jpg');
-  background-size: cover; background-color: rgb(102, 102, 102);
-  background-position: center center;
-  background-repeat: no-repeat no-repeat;
-}
+/* The background is set in App.vue */
 .blog-button {
   font-size: 0.9em;
   font-weight: bold;

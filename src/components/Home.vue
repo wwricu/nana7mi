@@ -1,16 +1,16 @@
 <template>
-  <div id="image" :class="{'rightIn':Display===true,'rightOut':Display===false}"></div>
-  <el-descriptions id="intro" :class="{'leftIn':Display===true,'leftOut':Display===false}"
+  <div id="image" :class="{'rightIn':ifDisplay===true,'rightOut':ifDisplay===false}"></div>
+  <el-descriptions id="intro" :class="{'leftIn':ifDisplay===true,'leftOut':ifDisplay===false}"
                    column=2 title="基本资料">
     <el-descriptions-item label-align="right" align="left" label="本名">七海Nana7mi</el-descriptions-item>
+    <el-descriptions-item label-align="right" align="left" label="年龄">17岁</el-descriptions-item>
+    <el-descriptions-item label-align="right" align="left" label="身高">159cm</el-descriptions-item>
+    <el-descriptions-item label-align="right" align="left" label="生日">7月15日</el-descriptions-item>
     <el-descriptions-item label-align="right" align="left" label="发色">棕发</el-descriptions-item>
     <el-descriptions-item label-align="right" align="left" label="瞳色">金瞳</el-descriptions-item>
-    <el-descriptions-item label-align="right" align="left" label="身高">159cm</el-descriptions-item>
-    <el-descriptions-item label-align="right" align="left" label="年龄">17岁</el-descriptions-item>
-    <el-descriptions-item label-align="right" align="left" label="生日">7月15日</el-descriptions-item>
     <el-descriptions-item label-align="right" align="left" label="星座">巨蟹座</el-descriptions-item>
     <el-descriptions-item label-align="right" align="left" label="出身地区">鲨鲨王国</el-descriptions-item>
-    <el-descriptions-item label-align="right" align="left" label="印象色" style="color: #4365ED">#4365ED</el-descriptions-item>
+    <el-descriptions-item label-align="right" align="left" label="印象色">#4365ED</el-descriptions-item>
     <el-descriptions-item label-align="right" align="left" label="粉丝勋章">
       <el-tag size="small">脆鲨</el-tag>
     </el-descriptions-item>
@@ -22,7 +22,7 @@
 export default {
   name: "Home",
   props: {
-    Display: Boolean,
+    ifDisplay: Boolean(false),
   }
 }
 </script>
@@ -61,13 +61,12 @@ export default {
   transform: translateX(60vmin);
   height: 70vmin;
   width: 50rem;
-  background: url("../assets/image/kachiyu_.jpg") no-repeat center center;
+  background: url("../assets/image/home_page.jpg") no-repeat center center;
   background-size: cover;
   opacity: 0.9;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
   border-radius: 2rem;
 }
-
 .leftIn {
   animation: leftIn 1s ease;
 }
@@ -207,7 +206,6 @@ export default {
     transform: translateX(-50%);
     padding-left: 1vmin;
     padding-top: 5vmin;
-    height: 40%;
   }
   #image {
     display: none;

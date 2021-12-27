@@ -18,7 +18,7 @@
           placement="bottom"
           :width="220"
           trigger="click"
-          content="本站是VirtuaReal旗下虚拟主播七海Nana7mi的个人向非官方网站"
+          content="本站是VirtuaReal旗下虚拟主播七海Nana7mi的非官方网站"
       >
         <template #reference>
           <el-button>关于本站</el-button>

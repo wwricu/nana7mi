@@ -1,6 +1,5 @@
 <template>
-<div class="video" :class="{'plainIn':Display===true,'plainOut':Display===false}">
-<!--  <el-divider content-position="left" style="font-size: 5rem;">{{ titleText }}</el-divider>-->
+<div class="video" :class="{'plainIn':ifDisplay===true,'plainOut':ifDisplay===false}">
   <div id="title">{{ titleText }}</div>
   <el-divider>
     <el-icon><star-filled/></el-icon>
@@ -16,9 +15,9 @@
                   :src="linkPrefix + video.bv"
                   scrolling="no" border="0" frameborder="no"
                   class="box-content"
-                  framespacing="0" allowfullscreen="true">
+                  framespacing="0" allowfullscreen="false">
           </iframe>
-          <img :src="video.img" v-show="i !== activePlayer" alt="">
+          <img :src="'/video_covers/'+video.bv+'.jpg'" v-show="i !== activePlayer" alt="">
           <img src="../assets/image/placeholder.png" class="placeholder" v-show="i === activePlayer" alt="">
           <div class="box-content" v-show="i !== activePlayer">
             <div class="content">
@@ -45,7 +44,7 @@
 export default {
   name: "Video",
   props: {
-    Display: Boolean,
+    ifDisplay: Boolean(false),
     titleText: String,
     videoIndex: Number,
   },
@@ -78,33 +77,29 @@ export default {
             // av: '78090377',
             bv:'BV1vJ411B7ng',
             // cv:'133606284',
-            img: require('../assets/image/BV1vJ411B7ng.jpg'),
             title: "【七海】七海的偶像宣言／私、アイドル宣言【手书PV】",
-            post: ""
+            post: "作者: 七海Nana7mi"
           },
           {
             // av: '592090979',
             bv:'BV18q4y1z7Vv',
             // cv:'454263865',
-            img: require('../assets/image/BV18q4y1z7Vv.jpg'),
             title: "I wanna kill you",
-            post: ""
+            post: "作者: 七海Nana7mi"
           },
           {
             // av: '292364428',
             bv:'BV1yf4y137XH',
             // cv:'388755989',
-            img: require('../assets/image/BV1yf4y137XH.jpg'),
             title: "【七海】我。/Myself -Miwake-【原创曲】",
-            post: ""
+            post: "作者: 七海Nana7mi"
           },
           {
             // av: '55477079',
             bv:'BV1y4411P7Wg',
             // cv:'96997789',
-            img: require('../assets/image/BV1y4411P7Wg.jpg'),
             title: "【VUP七海】震惊！！鲨鱼居然会说话？！",
-            post: ""
+            post: "作者: 七海Nana7mi"
           },
         ],
         [
@@ -112,7 +107,6 @@ export default {
             // av: '376524564',
             bv:'BV1wo4y1X7Tk',
             // cv:'365010431',
-            img: require('../assets/image/BV1wo4y1X7Tk.jpg'),
             title: "【海子姐】ybb小火车",
             post: "作者: dRa核桃"
           },
@@ -120,7 +114,6 @@ export default {
             // av: '334616725',
             bv:'BV1gA411P7ir',
             // cv:'387919612',
-            img: require('../assets/image/BV1gA411P7ir.jpg'),
             title: "Ring Ring Ring",
             post: "作者: 沈默沈默"
           },
@@ -128,7 +121,6 @@ export default {
             // av: '250375378',
             bv:'BV1cv411w7ky',
             // cv:'406863730',
-            img: require('../assets/image/BV1cv411w7ky.jpg'),
             title: "【棍海】猴鲨爱情故事（群青 cover:YOASOBI）",
             post: "作者: 四方三画"
           },
@@ -136,7 +128,6 @@ export default {
             // av: '805760588',
             bv:'BV1t34y1D7SX',
             // cv:'418850327',
-            img: require('../assets/image/BV1t34y1D7SX.jpg'),
             title: "shape of ybb",
             post: "作者: AT-15A"
           },

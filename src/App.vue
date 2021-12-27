@@ -1,6 +1,5 @@
 <template>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <Cover id="image1" @click="initPage($event)" @tap="initPage($event)"
+  <Cover id="cover" @click="initPage($event)" @tap="initPage($event)"
          :class="{'upOut':(coverInit===true && contentInit===true),
                   'upIn':(coverInit===false && firstInit===true)}"
   ></Cover>
@@ -8,21 +7,21 @@
   <Background
       :colorStyle="(scrollTop+clientHeight>scrollHeight?3:scrollTop>backgroundStyle2?2:scrollTop>backgroundStyle1?1:0)"
   ></Background>
-  <Home v-if="contentInit" :Display="(scrollTop <= 50)"></Home>
+  <Home v-if="contentInit" :ifDisplay="(scrollTop <= 50)"></Home>
   <Video v-if="contentInit" id="origin"
-         :Display="(scrollTop > originShow && scrollTop < originHide)"
+         :ifDisplay="(scrollTop > originShow && scrollTop < originHide)"
          :titleText="'原创作品'"
          :videoIndex="0"
   ></Video>
-  <div v-if="contentInit" id="image2" class="fixed_image"
+  <div v-if="contentInit" id="bar1" class="fixed_image"
        :style="{'background-position-y':positionY+'rem'}"
   ></div>
   <Video v-if="contentInit" id="amateur"
-         :Display="(scrollTop>amateurShow && scrollTop+clientHeight<scrollHeight)"
+         :ifDisplay="(scrollTop>amateurShow && scrollTop+clientHeight<scrollHeight)"
          :titleText="'二创作品'"
          :videoIndex="1"
   ></Video>
-  <div v-if="contentInit" id="image3" class="fixed_image"
+  <div v-if="contentInit" id="bar2" class="fixed_image"
        :style="{'background-position-y':positionY+image3Pos+'rem'}"
   ></div>
   <el-backtop :visibility-height=-1 @click="deinitPage" @tap="deinitPage"/>
@@ -70,7 +69,7 @@ export default {
       this.clientHeight = document.documentElement.clientHeight / this.fontSize; // visible height
       this.scrollHeight = Math.floor(document.documentElement.scrollHeight / this.fontSize); // total height
 
-      this.Y = document.getElementById("image2").offsetTop / this.fontSize;// * this.ratio;
+      this.Y = document.getElementById("bar1").offsetTop / this.fontSize;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio;
     },
     handleResize() {
@@ -142,7 +141,7 @@ export default {
         this.firstInit = true;
         this.coverInit = true;
         this.contentInit = true;
-        this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
+        this.Y = document.getElementById("bar1").offsetTop;// * this.ratio;
       }
     },
     deinitCover() {
@@ -176,20 +175,20 @@ export default {
 </script>
 
 <style scoped>
-#image1 {
+#cover {
   z-index: 998;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("./assets/image/background.jpg");
+  background-image: url("./assets/image/cover/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   position: fixed;
 }
-#image2 {
-  background-image: url("./assets/image/background3.jpg");
+#bar1 {
+  background-image: url("./assets/image/bar1.jpg");
   height: 40rem;
   top: 100rem;
   border: 5px #000;
@@ -201,8 +200,8 @@ export default {
   left: 50%;
   transform: translateX(-50%);
 }
-#image3 {
-  background-image: url("./assets/image/Nana7mi_background.jpg");
+#bar2 {
+  background-image: url("./assets/image/bar2.jpg");
   height: 40rem;
   top: 210rem;
   border: 5px #000;
@@ -266,7 +265,7 @@ Footer {
 
 @media only screen and (max-width: 1200px) {
   /* desktop device with 2 column video (medium screen) */
-  #image3 {
+  #bar2 {
     height: 50rem;
     top: 300rem;
   }
@@ -279,7 +278,7 @@ Footer {
 }
 @media only screen and (max-width: 767px) {
   /* desktop device with 1 column video (small screen) */
-  #image3 {
+  #bar2 {
     height: 50rem;
     top: 450rem;
   }
@@ -292,14 +291,14 @@ Footer {
 }
 @media only screen and (min-height:1023px) and (max-width:1025px) {
   /* iPad */
-  #image2 {
+  #bar1 {
     height: 20rem;
     top: 100rem;
   }
   #origin {
     top: 130rem;
   }
-  #image3 {
+  #bar2 {
     top: 220rem;
     height: 20rem;
   }
@@ -312,10 +311,10 @@ Footer {
 }
 @media only screen and (max-width: 429px) and (min-height: 639px) {
   /* Smartphones */
-  #image2 {
+  #bar1 {
     display: none;
   }
-  #image3 {
+  #bar2 {
     display: none;
   }
   #origin {
@@ -331,12 +330,12 @@ Footer {
 </style>
 <style>
 html {
-  /*-webkit-overflow-scrolling: unset;*/
   font-size: 1vmin;
-  width:100%; overflow-x:hidden;
+  width:100%;
+  overflow-x:hidden;
 }
 body {
-  background: url("assets/image/bg.009bdf28.png") fixed;
+  background: url("./assets/image/background.png") fixed;
   background-size: cover;
 }
 </style>
