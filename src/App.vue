@@ -1,9 +1,11 @@
 <template>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <Cover id="image1" :class="{'upOut':coverInit===true}" @click="initCover" @tap="initCover"></Cover>
+  <Cover id="image1" :class="{'upOut':coverInit===true}"
+         @click="initCover($event)" @tap="initCover($event)"
+  ></Cover>
   <TopMenu></TopMenu>
   <Background
-      :color_style="(scrollTop+clientHeight>scrollHeight?3:scrollTop>backgroundStyle2?2:scrollTop>backgroundStyle1?1:0)"
+      :colorStyle="(scrollTop+clientHeight>scrollHeight?3:scrollTop>backgroundStyle2?2:scrollTop>backgroundStyle1?1:0)"
   ></Background>
   <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
@@ -128,9 +130,15 @@ export default {
         this.backgroundStyle2 = 190;
       }
     },
-    initCover() {
-      this.coverInit = true;
-      this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
+    initCover(e) {
+      console.log(e.target.className);
+      if (e.target.className.indexOf('navigation') === -1
+       && e.target.className.indexOf('blog-button') === -1
+       && e.target.className.indexOf('profilepic') === -1) {
+        /* click out of links and avatar*/
+        this.coverInit = true;
+        this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
+      }
     }
   },
   mounted() {

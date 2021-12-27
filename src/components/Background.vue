@@ -1,6 +1,6 @@
 <template>
   <div class="container"
-       :class="color_style===1?'style1':color_style===2?'style2':color_style===3?'style2 jump':''">
+       :class="colorStyle===1?'style1':colorStyle===2?'style2':colorStyle===3?'style2 jump':''">
     <span>N</span>
     <span>A</span>
     <span>N</span>
@@ -15,7 +15,7 @@ export default {
   name: "Background",
   props: {
     Display: Boolean,
-    color_style: Number(0)
+    colorStyle: Number(0)
   }
 }
 </script>

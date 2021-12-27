@@ -122,10 +122,13 @@ $('.btn-mobile-menu__icon').click(function() {
 
 </script>
 
-<style scoped>
-@import "../assets/css/cover/vno.css";
+<style src="../assets/css/cover/vno.css" scoped>
+/* Use src rather than @import to avoid global style contamination */
+/*@import "../assets/css/cover/vno.css";*/
 /*@import "../assets/css/cover/iconfont.css";*/
 /*@import "../assets/css/cover/onlinewebfonts.css";*/
+
+/* The two scopes below are moved from the source code */
 #panel {
   background-image: url('../assets/image/cover/background.jpg');
   background-size: cover; background-color: rgb(102, 102, 102);
@@ -137,6 +140,8 @@ $('.btn-mobile-menu__icon').click(function() {
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
 }
+
+/* nav-container has no height after being compiled by Vue.js */
 #nav-container {
   margin: 0 auto;
   height: 10vmin;
