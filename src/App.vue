@@ -1,11 +1,7 @@
 <template>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <Cover id="image1" :class="{'upOut':coverInit===true}" @click="initCover" @tap="initCover"></Cover>
-<!--  <div id="image1"  :class="{'upOut':coverInit===true}"></div>-->
-<!--  <div id="mask1" @click="initCover" @tap="initCover" :class="{'maskUpOut':coverInit===true}">原来的首页</div>-->
   <TopMenu></TopMenu>
-<!--  <iframe src="//player.bilibili.com/player.html?aid=78090377&bvid=BV1vJ411B7ng&cid=133606284&page=1"-->
-<!--          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>-->
   <Background
       :color_style="(scrollTop+clientHeight>scrollHeight?3:scrollTop>backgroundStyle2?2:scrollTop>backgroundStyle1?1:0)"
   ></Background>
@@ -168,21 +164,6 @@ export default {
   background-position: center center;
   position: fixed;
 }
-#mask1 {
-  position: absolute;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0.4;
-  -moz-opacity: 0.4;
-  font-size: 3.125rem;
-  padding-top: 18.75rem;
-  text-align: center;
-  color: white;
-  background-color: #000;
-}
 #image2 {
   background-image: url("./assets/image/background3.jpg");
   height: 40rem;
@@ -242,10 +223,6 @@ Footer {
     opacity: 0;
     display: none;
   }
-}
-.maskUpOut {
-  animation: maskUpOut 1s ease;
-  animation-fill-mode: forwards;
 }
 @keyframes maskUpOut {
   from {
