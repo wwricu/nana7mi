@@ -11,16 +11,16 @@
   <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
   <Video v-if="coverInit" id="origin"
          :Display="(scrollTop > originShow && scrollTop < originHide)"
-         :title_text="'原创作品'"
-         :video_index="0"
+         :titleText="'原创作品'"
+         :videoIndex="0"
   ></Video>
   <div v-if="coverInit" id="image2" class="fixed_image"
        :style="{'background-position-y':positionY+'rem'}"
   ></div>
   <Video v-if="coverInit" id="amateur"
          :Display="(scrollTop>amateurShow && scrollTop+clientHeight<scrollHeight)"
-         :title_text="'二创作品'"
-         :video_index="1"
+         :titleText="'二创作品'"
+         :videoIndex="1"
   ></Video>
   <div v-if="coverInit" id="image3" class="fixed_image"
        :style="{'background-position-y':positionY+image3Pos+'rem'}"
@@ -75,14 +75,15 @@ export default {
 
       if (window.innerHeight > 639 && window.innerWidth < 429) {
         /* Portable device with one column video (Smartphones) */
-        this.originShow = 50;
-        this.originHide = 130;
-        this.amateurShow = 130;
-        this.amateurHide = 210;
+        /* Disable animation on smartphones */
+        this.originShow = -1;
+        this.originHide = 1000;
+        this.amateurShow = -1;
+        this.amateurHide = 1000;
         this.image3Pos = 270;
 
         // this.backgroundStyle1 = 80;
-        this.backgroundStyle2 = 260;
+        this.backgroundStyle2 = -1; // Enforce style2 background on smartphones
       } else if (window.innerHeight > 1023 && window.innerWidth < 1025) {
         /*
           Portable device with two column video (iPad)
@@ -98,10 +99,11 @@ export default {
         this.backgroundStyle2 = 190;
       } else if (window.innerWidth < 768) {
         /* Desktop device with one column video (small screen) */
-        this.originShow = 100;
-        this.originHide = 350;
-        this.amateurShow = 300;
-        this.amateurHide = 300;
+        /* Disable animation on small screen devices */
+        this.originShow = -1;
+        this.originHide = 1000;
+        this.amateurShow = -1;
+        this.amateurHide = 1000;
         this.image3Pos = 700;
 
         // this.backgroundStyle1 = 80;
@@ -212,7 +214,7 @@ Footer {
 }
 .fixed_image {
   position: absolute;
-  background: no-repeat fixed;
+  background: no-repeat fixed center 0;
   background-size: cover;
   left: 0;
   width: 100%;
@@ -254,7 +256,7 @@ Footer {
 }
 
 @media only screen and (max-width: 1200px) {
-  /* desktop device with 2 column video */
+  /* desktop device with 2 column video (medium screen) */
   #image3 {
     height: 50rem;
     top: 300rem;
@@ -267,7 +269,7 @@ Footer {
   }
 }
 @media only screen and (max-width: 767px) {
-  /* desktop device with 2 column video */
+  /* desktop device with 1 column video (small screen) */
   #image3 {
     height: 50rem;
     top: 450rem;
@@ -302,18 +304,19 @@ Footer {
 @media only screen and (max-width: 429px) and (min-height: 639px) {
   /* Smartphones */
   #image2 {
-    top: 120rem;
-    height: 30rem;
+    display: none;
   }
   #image3 {
-    top: 300rem;
-    height: 20rem;
+    display: none;
+  }
+  #origin {
+    top: 120rem;
   }
   #amateur {
-    top: 320rem;
+    top: 280rem;
   }
   Footer {
-    top: 500rem;
+    top: 450rem;
   }
 }
 </style>

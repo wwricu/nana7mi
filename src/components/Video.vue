@@ -1,26 +1,26 @@
 <template>
 <div class="video" :class="{'plainIn':Display===true,'plainOut':Display===false}">
-<!--  <el-divider content-position="left" style="font-size: 5rem;">{{ title_text }}</el-divider>-->
-  <div id="title">{{ title_text }}</div>
+<!--  <el-divider content-position="left" style="font-size: 5rem;">{{ titleText }}</el-divider>-->
+  <div id="title">{{ titleText }}</div>
   <el-divider>
     <el-icon><star-filled/></el-icon>
   </el-divider>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-lg-3"
-           v-for="(video,i) in video_lists[video_index]" :key="i"
+           v-for="(video,i) in videoLists[videoIndex]" :key="i"
            @click="showPlayer(i)"
       >
-        <div class="box" :class="{'disable_animation':i === active_player}">
-          <iframe :id="'player'+i" v-if="i === active_player"
+        <div class="box" :class="{'disable_animation':i === activePlayer}">
+          <iframe :id="'player'+i" v-if="i === activePlayer"
                   :src="linkPrefix + video.bv"
                   scrolling="no" border="0" frameborder="no"
                   class="box-content"
                   framespacing="0" allowfullscreen="true">
           </iframe>
-          <img :src="video.img" v-show="i !== active_player" alt="">
-          <img src="../assets/image/placeholder.png" class="placeholder" v-show="i === active_player" alt="">
-          <div class="box-content" v-show="i !== active_player">
+          <img :src="video.img" v-show="i !== activePlayer" alt="">
+          <img src="../assets/image/placeholder.png" class="placeholder" v-show="i === activePlayer" alt="">
+          <div class="box-content" v-show="i !== activePlayer">
             <div class="content">
               <span class="post">{{ video.post }}</span>
               <h3 class="title">{{ video.title }}</h3>
@@ -28,7 +28,7 @@
             <ul class="icon">
 <!--              <li><a href="#"><i class="fa fa-search"></i></a></li>-->
               <li>
-                <a :href="video_prefix + video.bv" target="_blank">
+                <a :href="videoPrefix + video.bv" target="_blank">
                   <i class="fa fa-link"></i>
                 </a>
               </li>
@@ -46,20 +46,21 @@ export default {
   name: "Video",
   props: {
     Display: Boolean,
-    title_text: String,
-    video_index: Number,
+    titleText: String,
+    videoIndex: Number,
   },
   methods: {
     showPlayer(index) {
-      this.active_player=index;
+      this.activePlayer = index;
     },
     handleClick(e) {
-      if (e.target.className.indexOf('box-content') === -1
+      if (e.target.className.indexOf('title') === -1
+       && e.target.className.indexOf('post') === -1
+       && e.target.className.indexOf('box') === -1
        && e.target.className.indexOf('content') === -1
-       && e.target.className.indexOf('placeholder') === -1
-       && e.target.className.indexOf('box') === -1) {
+       && e.target.className.indexOf('placeholder') === -1) {
         /* click out of box */
-        this.active_player=null;
+        this.activePlayer = null;
       }
     },
   },
@@ -69,8 +70,9 @@ export default {
   data() {
     return {
       linkPrefix: '//player.bilibili.com/player.html?high_quality=1&bvid=',
-      active_player: Number,
-      video_lists: [
+      videoPrefix: 'https://www.bilibili.com/video/',
+      activePlayer: Number,
+      videoLists: [
         [
           {
             // av: '78090377',
