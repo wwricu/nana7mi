@@ -1,7 +1,8 @@
 <template>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <div id="image1"  :class="{'upOut':coverInit===true}"></div>
-  <div id="mask1" @click="initCover" @tap="initCover" :class="{'maskUpOut':coverInit===true}">原来的首页</div>
+  <Cover id="image1"  :class="{'upOut':coverInit===true}"></Cover>
+<!--  <div id="image1"  :class="{'upOut':coverInit===true}"></div>-->
+<!--  <div id="mask1" @click="initCover" @tap="initCover" :class="{'maskUpOut':coverInit===true}">原来的首页</div>-->
   <TopMenu></TopMenu>
 <!--  <iframe src="//player.bilibili.com/player.html?aid=78090377&bvid=BV1vJ411B7ng&cid=133606284&page=1"-->
 <!--          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>-->
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+import Cover from "@/components/Cover";
 import Home from "@/components/Home";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
@@ -143,11 +145,11 @@ export default {
     // this.handleScroll(); // this caused bugs in menu
   },
   components: {
+    Cover,
     Footer,
     Home,
     Video,
     TopMenu,
-    // JumpLetters,
     Background
   }
 }
