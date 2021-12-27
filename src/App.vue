@@ -1,31 +1,32 @@
 <template>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <Cover id="image1" :class="{'upOut':coverInit===true}"
-         @click="initCover($event)" @tap="initCover($event)"
+  <Cover id="image1" @click="initPage($event)" @tap="initPage($event)"
+         :class="{'upOut':(coverInit===true && contentInit===true),
+                  'upIn':(coverInit===false && firstInit===true)}"
   ></Cover>
   <TopMenu></TopMenu>
   <Background
       :colorStyle="(scrollTop+clientHeight>scrollHeight?3:scrollTop>backgroundStyle2?2:scrollTop>backgroundStyle1?1:0)"
   ></Background>
-  <Home v-if="coverInit" :Display="(scrollTop <= 50)"></Home>
-  <Video v-if="coverInit" id="origin"
+  <Home v-if="contentInit" :Display="(scrollTop <= 50)"></Home>
+  <Video v-if="contentInit" id="origin"
          :Display="(scrollTop > originShow && scrollTop < originHide)"
          :titleText="'原创作品'"
          :videoIndex="0"
   ></Video>
-  <div v-if="coverInit" id="image2" class="fixed_image"
+  <div v-if="contentInit" id="image2" class="fixed_image"
        :style="{'background-position-y':positionY+'rem'}"
   ></div>
-  <Video v-if="coverInit" id="amateur"
+  <Video v-if="contentInit" id="amateur"
          :Display="(scrollTop>amateurShow && scrollTop+clientHeight<scrollHeight)"
          :titleText="'二创作品'"
          :videoIndex="1"
   ></Video>
-  <div v-if="coverInit" id="image3" class="fixed_image"
+  <div v-if="contentInit" id="image3" class="fixed_image"
        :style="{'background-position-y':positionY+image3Pos+'rem'}"
   ></div>
-  <el-backtop :visibility-height="originHide * fontSize"/>
-  <Footer v-if="coverInit" ></Footer>
+  <el-backtop :visibility-height=-1 @click="deinitPage" @tap="deinitPage"/>
+  <Footer v-if="contentInit" ></Footer>
 </template>
 
 <script>
@@ -40,7 +41,9 @@ export default {
   name: 'App',
   data() {
     return {
-      coverInit: false,
+      firstInit: false, // do not play cover in animation before first init
+      coverInit: false, // control whether the cover is shown
+      contentInit: false, // control whether the content is shown
       ratio: 2,
       positionY: 0,
       Y: 0,
@@ -130,15 +133,28 @@ export default {
         this.backgroundStyle2 = 190;
       }
     },
-    initCover(e) {
+    initPage(e) {
       console.log(e.target.className);
       if (e.target.className.indexOf('navigation') === -1
        && e.target.className.indexOf('blog-button') === -1
        && e.target.className.indexOf('profilepic') === -1) {
         /* click out of links and avatar*/
+        this.firstInit = true;
         this.coverInit = true;
+        this.contentInit = true;
         this.Y = document.getElementById("image2").offsetTop;// * this.ratio;
       }
+    },
+    deinitCover() {
+      this.coverInit = false;
+    },
+    deinitContent() {
+      this.contentInit = false;
+    },
+    deinitPage() {
+      let delay = this.scrollTop * this.fontSize * 0.75;
+      setTimeout(this.deinitCover, delay);
+      setTimeout(this.deinitContent, delay + 1000 );
     }
   },
   mounted() {
@@ -217,9 +233,24 @@ Footer {
   /*-ms-transform: translateZ(-10px);!* IE 9 *!*/
   /*-o-transform: translateZ(-10px);!* Opera *!*/
 }
+.upIn {
+  animation: upIn 1s ease;
+  animation-fill-mode: forwards;
+}
 .upOut {
   animation: upOut 1s ease;
   animation-fill-mode: forwards;
+}
+@keyframes upIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+    display: none;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 @keyframes upOut {
   from {
@@ -230,16 +261,6 @@ Footer {
     transform: translateY(-100%);
     opacity: 0;
     display: none;
-  }
-}
-@keyframes maskUpOut {
-  from {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-  to {
-    transform: translateY(-100%);
-    opacity: 0.6;
   }
 }
 

@@ -165,47 +165,6 @@ export default {
   animation: plainOut 1s ease;
   animation-fill-mode: forwards;
 }
-@keyframes upIn {
-  from {
-    transform: translateY(120%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes downIn {
-  from {
-    transform: translateY(-120%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes upOut {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(120%);
-    opacity: 0;
-  }
-}
-@keyframes downOut {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-120%);
-    opacity: 0;
-    display: none;
-  }
-}
 @keyframes plainIn {
   from {
     opacity: 0;
