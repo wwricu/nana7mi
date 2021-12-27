@@ -16,41 +16,41 @@
       </el-sub-menu>
       <el-popover
           placement="bottom"
-          :width="200"
+          :width="220"
           trigger="click"
-          content="本站是VirtuaReal旗下虚拟主播七海Nana7mi的非商业性质非官方网站"
+          content="本站是VirtuaReal旗下虚拟主播七海Nana7mi的个人向非官方网站"
       >
         <template #reference>
           <el-button>关于本站</el-button>
         </template>
       </el-popover>
-      <el-popover placement="bottom" :width="400" trigger="click">
+      <el-popover placement="bottom" :width="500" trigger="click">
         <template #reference>
           <el-button>版权说明</el-button>
         </template>
           <el-descriptions column=2 >
             <el-descriptions-item label-align="right" align="left" label="作者">
-              <a href="https://space.bilibili.com/20769654" target="_blank">打牙专家, </a>
+              <a href="https://space.bilibili.com/20769654" target="_blank">打牙专家&nbsp;&nbsp;</a>
               <a href="https://space.bilibili.com/20769654" target="_blank">打牙专家</a>
             </el-descriptions-item>
             <el-descriptions-item label-align="right" align="left" label="图片版权">
-              <a href="https://space.bilibili.com/20769654" target="_blank">A,</a>
-              <a href="https://space.bilibili.com/20769654" target="_blank">B</a>
+              <a href="https://space.bilibili.com/1883330" target="_blank">再也不吃柠檬炸鸡&nbsp;&nbsp;</a>
+              <a href="https://space.bilibili.com/1999511110" target="_blank">kachiyu_</a>
             </el-descriptions-item>
             <el-descriptions-item label-align="right" align="left" label="开源软件">
-              <a href="https://github.com/vuejs/vue" target="_blank">Vue.js,</a>
+              <a href="https://github.com/vuejs/vue" target="_blank">Vue.js&nbsp;&nbsp;</a>
               <a href="https://github.com/element-plus/element-plus" target="_blank">Element-plus</a>
             </el-descriptions-item>
-            <el-descriptions-item label-align="right" align="left" label="部分素材来自">
+            <el-descriptions-item label-align="right" align="left" label="部分内容来自">
+              <a href="https://zh.moegirl.org.cn/" target="_blank">萌娘百科&nbsp;&nbsp;</a>
               <a href="https://www.17sucai.com/" target="_blank">17素材</a>
             </el-descriptions-item>
           </el-descriptions>
       </el-popover>
       <el-popover
           placement="bottom"
-          :width="200"
+          :width="250"
           trigger="click"
-          content="this is content, this is content, this is content"
       >
         <template #reference>
           <el-button>联系我们</el-button>
