@@ -1,6 +1,6 @@
 <template>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <Cover id="image1"  :class="{'upOut':coverInit===true}"></Cover>
+  <Cover id="image1" :class="{'upOut':coverInit===true}" @click="initCover" @tap="initCover"></Cover>
 <!--  <div id="image1"  :class="{'upOut':coverInit===true}"></div>-->
 <!--  <div id="mask1" @click="initCover" @tap="initCover" :class="{'maskUpOut':coverInit===true}">原来的首页</div>-->
   <TopMenu></TopMenu>
@@ -239,7 +239,8 @@ Footer {
   }
   to {
     transform: translateY(-100%);
-    opacity: 1;
+    opacity: 0;
+    display: none;
   }
 }
 .maskUpOut {

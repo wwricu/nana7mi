@@ -39,15 +39,15 @@
                 </ul>
               </nav>
             </div>
-            <div class="cover-navigation iUp">
+<!--            <div class="cover-navigation iUp">-->
 <!--              <p id="description2" class="panel-cover__description">-->
 <!--                如果对本建设有指导性意见或建议，<strong>请联系：</strong>-->
 <!--              </p>-->
-              <a href="mailto:ybb@nana7mi.com" class="blog-button">
-                <i class='social iconfont icon-email'></i>
-                ybb@nana7mi.com
-              </a>
-            </div>
+<!--              <a href="mailto:ybb@nana7mi.com" class="blog-button">-->
+<!--                <i class='social iconfont icon-email'></i>-->
+<!--                ybb@nana7mi.com-->
+<!--              </a>-->
+<!--            </div>-->
           </div>
         </div>
       </div>
