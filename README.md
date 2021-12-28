@@ -41,11 +41,18 @@ npm run build
 npm run lint
 ```
 
-## Contact
+## Compatibilities
 
-Email: [ybb@nana7mi.com](ybb@nana7mi.com)
+### Resolution
+-   [x] 3840 x 1920 ~ 1920 x 1080 (landscape desktop devices)
+-   [x] 768 x 1024, 834 x 1122, 1024 x 1366 (iPad series)
+-   [x] 375 x 812, 414 x 896 (iPhone X, iPhone XS Max)
 
-Project Link: [https://github.com/HerrKKK/nana7mi](https://github.com/HerrKKK/nana7mi)
+### Browsers
+- [x] Mozilla Firefox
+- [x] Google Chrome
+- [x] Microsoft Edge
+- [x] Safari (Portable)
 
 ## Acknowledgments
 
@@ -54,3 +61,9 @@ Here are resources used in the project.
 * [Element-Plus](https://element-plus.gitee.io)
 * [Font Awesome](https://fontawesome.com)
 * [Google Font](https://developers.google.com/fonts/docs/getting_started)
+
+## Contact
+
+Email: [ybb@nana7mi.com](ybb@nana7mi.com)
+
+Project Link: [https://github.com/HerrKKK/nana7mi](https://github.com/HerrKKK/nana7mi)
