@@ -75,7 +75,7 @@ export default {
     handleResize() {
       this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
 
-      if (window.innerHeight > 639 && window.innerWidth < 429) {
+      if (window.innerHeight > 428 && window.innerWidth < 429) {
         /* Portable device with one column video (Smartphones) */
         /* Disable animation on smartphones */
         this.originShow = -1;
@@ -133,12 +133,17 @@ export default {
       }
     },
     initPage(e) {
-      // console.log(e.target.className);
-      if (e.target.className.animVal.indexOf('cover_icon') !== -1
-       || e.target.className.indexOf('navigation') === -1
-       && e.target.className.indexOf('blog-button') === -1
-       && e.target.className.indexOf('profilepic') === -1) {
-        /* click out of links and avatar*/
+      // console.log(e.target.className.animVal.indexOf('cover_icon'));
+      // for (let i in e.target) {
+      //   console.log(i);
+      // }
+      console.log(e.target.getAttribute("class"));
+
+      if ( e.target.getAttribute("class").indexOf('cover_icon') !== -1
+        || e.target.getAttribute("class").indexOf('navigation') === -1
+        && e.target.getAttribute("class").indexOf('blog-button') === -1
+        && e.target.getAttribute("class").indexOf('profilepic') === -1) {
+        /* click out of links and avatar */
         this.firstInit = true;
         this.coverInit = true;
         this.contentInit = true;
@@ -310,7 +315,7 @@ Footer {
     top: 330rem;
   }
 }
-@media only screen and (max-width: 429px) and (min-height: 639px) {
+@media only screen and (max-width: 429px) and (min-height: 428px) {
   /* Smartphones */
   #bar1 {
     display: none;
@@ -319,13 +324,13 @@ Footer {
     display: none;
   }
   #origin {
-    top: 120rem;
+    top: 70vh;
   }
   #amateur {
-    top: 280rem;
+    top: 160vh;
   }
   Footer {
-    top: 450rem;
+    top: 250vh;
   }
 }
 </style>

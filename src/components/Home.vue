@@ -185,7 +185,8 @@ export default {
   }
 }
 
-@media only screen and (min-height:1200px) and (max-width: 1200px) {
+@media only screen and (min-height:1023px) and (max-width:1025px) {
+  /* iPad */
   #intro {
     width: 50%;
     padding-left: 1rem;
@@ -196,7 +197,7 @@ export default {
     box-shadow: none;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   /* smaller than iPad */
   #intro {
     top: 25rem;
@@ -228,6 +229,17 @@ export default {
       transform: translateX(-50%);
       opacity: 0;
     }
+  }
+}
+@media only screen and (max-width: 429px) and (min-height: 428px) {
+  /* smaller than iPad */
+  #intro {
+    top: 25rem;
+    height: 50vh;
+    width: 80%;
+    transform: translateX(-50%);
+    padding: 5vmin 0 0 10vmin;
+    font-size: 3vmin;
   }
 }
 </style>
