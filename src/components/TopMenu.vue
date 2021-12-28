@@ -15,13 +15,18 @@
       </el-sub-menu>
       <el-popover
           placement="bottom"
-          :width="220"
+          :width="250"
           trigger="click"
-          content="本站是VirtuaReal旗下虚拟主播七海Nana7mi的非官方网站"
       >
         <template #reference>
           <el-button>关于本站</el-button>
         </template>
+        <el-descriptions column=1>
+          <el-descriptions-item label-align="right" align="left" label="本站是VirtuaReal旗下虚拟主播七海Nana7mi的非官方网站"></el-descriptions-item>
+          <el-descriptions-item label-align="right" align="left" label="项目地址">
+            <a href="https://github.com/HerrKKK/nana7mi" target="_blank">Github</a>
+          </el-descriptions-item>
+        </el-descriptions>
       </el-popover>
       <el-popover placement="bottom" :width="500" trigger="click">
         <template #reference>
@@ -30,7 +35,7 @@
           <el-descriptions column=2 >
             <el-descriptions-item label-align="right" align="left" label="作者">
               <a href="https://space.bilibili.com/20769654" target="_blank">打牙专家&nbsp;&nbsp;</a>
-              <a href="https://space.bilibili.com/20769654" target="_blank">打牙专家</a>
+              <a href="https://space.bilibili.com/20769654" target="_blank">xxxxxx</a>
             </el-descriptions-item>
             <el-descriptions-item label-align="right" align="left" label="图片版权">
               <a href="https://space.bilibili.com/1883330" target="_blank">再也不吃柠檬炸鸡&nbsp;&nbsp;</a>
