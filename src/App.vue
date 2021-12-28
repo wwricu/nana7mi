@@ -87,30 +87,35 @@ export default {
 
       if (window.innerHeight > 428 && window.innerWidth < 429) {
         /* Portrait Smartphones with one column video*/
-        /* Disable animation on smartphones */
-        this.ratio = 2;
+        /* Disable animation on smartphone */
+        /* animation control */
         this.originShow = -1;
         this.originHide = 1000;
         this.amateurShow = -1;
         this.amateurHide = 1000;
         this.bar2Offset = 270;
+
+        /* background style control */
         // this.backgroundStyle1 = 80; // Same under all resolutions
         this.backgroundStyle2 = -1; // Enforce style2 background on smartphones
 
+        /* element position control */
         this.bar1Top = '80vh';
         this.bar1Height = '15vh';
         this.originTop = '70vh';
         this.bar2Top = '160vh';
         this.bar2Height = '15vh';
-        this.amateurTop = '160vh';
-        this.footerTop = '250vh';
-      } else if (window.innerHeight > 1023 && window.innerWidth < 1025) {
+        this.amateurTop = '150vh';
+        this.footerTop = '230vh';
+      } else if (window.innerHeight > 900 && window.innerWidth < 1025) {
         /*
           Portrait iPad
           iPad & iPad mini: 768x1024,
           iPad Pro: 834x1112 1024x1366,
+          Note: The height of iPad is 1024px but
+          the height of address bar is not part of innerHeight
+          so the innerHeight will never reach 1024px.
         */
-        this.ratio = 2;
         this.originShow = 50;
         this.originHide = 130;
         this.amateurShow = 130;
@@ -123,14 +128,13 @@ export default {
         this.bar1Top = '80vh';
         this.bar1Height = '15vh';
         this.originTop = '100vh';
-        this.bar2Top = '160vh';
+        this.bar2Top = '170vh';
         this.bar2Height = '15vh';
-        this.amateurTop = '180vh';
-        this.footerTop = '240vh';
+        this.amateurTop = '190vh';
+        this.footerTop = '260vh';
       } else if (window.innerWidth < 768) {
         /* small screen with one column video */
         /* Disable animation on small screen devices */
-        this.ratio = 2;
         this.originShow = -1;
         this.originHide = 1000;
         this.amateurShow = -1;
@@ -138,19 +142,28 @@ export default {
         this.bar1Offset = 0;
         this.bar2Offset = 700;
 
+        this.bar1Top = '100vh';
+        this.bar1Height = '30vh';
+        this.originTop = '130vmin';
+        this.bar2Top = '210vh';
+        this.bar2Height = '30vh';
+        this.amateurTop = '430vmin';
+        this.footerTop = '750vmin';
+
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 260;
       } else if (window.innerWidth < 1200) {
         /* medium screen and landscape iPad with two column video */
-        this.ratio = 2;
+        /* Note: vertical layout should not be too compact because
+        * desktop device shares the style with tablets here */
         this.originShow = 50;
         this.originHide = 250;
         this.amateurShow = 250;
         this.amateurHide = 400;
         this.bar1Offset = 0;
-        this.bar2Offset = 380;
+        this.bar2Offset = 370;
         // this.backgroundStyle1 = 80;
-        this.backgroundStyle2 = 280;
+        this.backgroundStyle2 = 270;
 
         this.bar1Top = '100vh';
         this.bar1Height = '40vh';
@@ -158,14 +171,9 @@ export default {
         this.bar2Top = '280vh';
         this.bar2Height = '40vh';
         this.amateurTop = '330vh';
-        this.footerTop = '440vh';
-        if (navigator.userAgent.match(/(iPad).*OS\s([\d_]+)/)) {
-          // iOS background-attachment compatibility
-          this.ratio = 1;
-        }
+        this.footerTop = '450vh';
       } else {
         /* Ordinary resolution (large screen) */
-        this.ratio = 2;
         this.originShow = 80;
         this.originHide = 170;
         this.amateurShow = 190;
@@ -217,6 +225,12 @@ export default {
   mounted() {
     window.addEventListener("scroll", this.handleScroll); //创建滚动监听，页面滚动回调handleScroll方法
     window.addEventListener('resize', this.handleResize);
+    let ua = navigator.userAgent;
+    if (ua.match(/(iPhone\sOS)\s([\d_]+)/)
+    || ua.match(/(iPad).*OS\s([\d_]+)/)) {
+      this.ratio = 1;
+    }
+
     this.handleResize();
     // this.handleScroll(); // this caused bugs in menu
   },
@@ -339,16 +353,6 @@ Footer {
 @media only screen and (max-width: 767px) {
   /* zooming in screens and small screens with one column video
   width: [0, 768) */
-  #bar2 {
-    height: 50rem;
-    top: 450rem;
-  }
-  #amateur {
-    top: 520rem;
-  }
-  Footer {
-    top: 820rem;
-  }
 }
 @media only screen and (min-height:1023px) and (max-width:1025px) {
   /* Portrait iPad */
