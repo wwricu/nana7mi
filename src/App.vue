@@ -81,6 +81,7 @@ export default {
 
       this.Y = document.getElementById("bar1").offsetTop / this.fontSize;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio;
+      console.log(window.innerWidth,window.innerHeight);
     },
     handleResize() {
       this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
@@ -168,10 +169,15 @@ export default {
         this.bar1Top = '100vh';
         this.bar1Height = '40vh';
         this.originTop = '150vh';
-        this.bar2Top = '280vh';
+        this.bar2Top = '300vh';
         this.bar2Height = '40vh';
-        this.amateurTop = '330vh';
-        this.footerTop = '450vh';
+        this.amateurTop = '350vh';
+        this.footerTop = '470vh';
+        if (navigator.userAgent.match(/(iPad).*OS\s([\d_]+)/)) {
+          this.bar2Top = '270vh';
+          this.amateurTop = '320vh';
+          this.footerTop = '440vh';
+        }
       } else {
         /* Ordinary resolution (large screen) */
         this.originShow = 80;
@@ -193,12 +199,6 @@ export default {
       }
     },
     initPage(e) {
-      // console.log(e.target.className.animVal.indexOf('cover_icon'));
-      // for (let i in e.target) {
-      //   console.log(i);
-      // }
-      console.log(e.target.getAttribute("class"));
-
       if ( e.target.getAttribute("class").indexOf('cover_icon') !== -1
         || e.target.getAttribute("class").indexOf('navigation') === -1
         && e.target.getAttribute("class").indexOf('blog-button') === -1

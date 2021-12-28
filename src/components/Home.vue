@@ -128,7 +128,7 @@ export default {
 }
 
 @media only screen and (max-width:1200px) {
-  /* Video animation fit */
+  /* medium screen and landscape iPad with two column video */
   #intro {
     left: 50%;
     height: 70vmin;
@@ -186,22 +186,24 @@ export default {
 }
 
 @media only screen and (min-height:1023px) and (max-width:1025px) {
-  /* iPad */
+  /* Portrait iPad */
   #intro {
     width: 50%;
+    height: 50vh;
     padding-left: 1rem;
     font-size: 1rem;
     box-shadow: none;
   }
   #image {
     box-shadow: none;
+    height: 50vh;
   }
 }
 @media only screen and (max-width: 767px) {
-  /* smaller than iPad */
+  /* small screen with one column video */
   #intro {
-    top: 25rem;
-    height: 50rem;
+    top: 25vh;
+    height: 70vh;
     width: 50%;
     transform: translateX(-50%);
     padding-left: 1vmin;
@@ -234,7 +236,7 @@ export default {
 @media only screen and (max-width: 429px) and (min-height: 428px) {
   /* smaller than iPad */
   #intro {
-    top: 25rem;
+    top: 25vh;
     height: 50vh;
     width: 80%;
     transform: translateX(-50%);
