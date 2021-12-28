@@ -2,7 +2,7 @@
 
 <div>
   <p align="center">
-    An unoffical webpage for the virtual streamer Nana7mi on bilibili!
+    An unofficial webpage for the virtual streamer Nana7mi on bilibili!
     <br />
     <br />
     <a href="https://nana7mi.com"><strong>View the project</strong></a>
@@ -13,7 +13,7 @@
 
 ## About The Project
 
-A page made by funs which demonstrates selected pieces from the original songs, videos, stream record of virtual streamer [Nana7mi](https://space.bilibili.com/434334701) and their derivative works.
+A page made by funs which demonstrates selected pieces from original songs, videos, stream record of the virtual streamer [Nana7mi](https://space.bilibili.com/434334701) and their derivative works.
 
 ### Built With
 

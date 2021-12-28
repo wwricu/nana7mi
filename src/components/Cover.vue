@@ -39,6 +39,7 @@
                 </ul>
               </nav>
             </div>
+
 <!--            <div class="cover-navigation iUp">-->
 <!--              <p id="description2" class="panel-cover__description">-->
 <!--                如果对本建设有指导性意见或建议，<strong>请联系：</strong>-->
@@ -48,6 +49,10 @@
 <!--                ybb@nana7mi.com-->
 <!--              </a>-->
 <!--            </div>-->
+          </div>
+          <div class="arrow_container">
+            <svg class="cover_icon iUp" width="20" height="20" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-365b8594=""><path fill="currentColor" d="M831.872 340.864L512 652.672 192.128 340.864a30.592 30.592 0 00-42.752 0 29.12 29.12 0 000 41.6L489.664 714.24a32 32 0 0044.672 0l340.288-331.712a29.12 29.12 0 000-41.728 30.592 30.592 0 00-42.752 0z"></path></svg>
+            <svg class="cover_icon iUp" width="20" height="20" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-365b8594=""><path fill="currentColor" d="M831.872 340.864L512 652.672 192.128 340.864a30.592 30.592 0 00-42.752 0 29.12 29.12 0 000 41.6L489.664 714.24a32 32 0 0044.672 0l340.288-331.712a29.12 29.12 0 000-41.728 30.592 30.592 0 00-42.752 0z"></path></svg>
           </div>
         </div>
       </div>
@@ -140,5 +145,32 @@ $('.btn-mobile-menu__icon').click(function() {
   margin: 0 auto;
   height: 10vmin;
   width: fit-content;
+}
+</style>
+<style>
+.cover_icon {
+  margin: -5vmin 0;
+  animation: blink 1500ms infinite;
+  animation-delay: 1s;
+}
+.arrow_container {
+  height: fit-content;
+}
+.arrow_container:hover .cover_icon {
+  height: 30px;
+}
+svg:nth-child(2) {
+  animation-delay: 750ms;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
