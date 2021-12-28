@@ -50,12 +50,22 @@ export default {
       clientHeight: 0,
       scrollHeight: 0,
       fontSize: window.innerWidth / 100,
+
+      bar1Top: '100vh',
+      bar1Height: '40vh',
+      originTop: '150vh',
+      bar2Top: '210vh',
+      bar2Height: '40vh',
+      amateurTop: '260vh',
+      footerTop: '300vh',
+
       originShow: 90, // rem
       originHide: 160, // rem
       amateurShow: 210, // rem
       amateurHide: 290, // rem
+      bar1Offset: 0,
       bar2Offset: 220,
-      hidePlayer: true,
+      footOffset: 0,
 
       backgroundStyle1: 75, // rem
       backgroundStyle2: 190, // rem
@@ -76,60 +86,102 @@ export default {
       this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
 
       if (window.innerHeight > 428 && window.innerWidth < 429) {
-        /* Portable device with one column video (Smartphones) */
+        /* Portrait Smartphones with one column video*/
         /* Disable animation on smartphones */
+        this.ratio = 2;
         this.originShow = -1;
         this.originHide = 1000;
         this.amateurShow = -1;
         this.amateurHide = 1000;
         this.bar2Offset = 270;
-
-        // this.backgroundStyle1 = 80;
+        // this.backgroundStyle1 = 80; // Same under all resolutions
         this.backgroundStyle2 = -1; // Enforce style2 background on smartphones
+
+        this.bar1Top = '80vh';
+        this.bar1Height = '15vh';
+        this.originTop = '70vh';
+        this.bar2Top = '160vh';
+        this.bar2Height = '15vh';
+        this.amateurTop = '160vh';
+        this.footerTop = '250vh';
       } else if (window.innerHeight > 1023 && window.innerWidth < 1025) {
         /*
-          Portable device with two column video (iPad)
+          Portrait iPad
           iPad & iPad mini: 768x1024,
           iPad Pro: 834x1112 1024x1366,
         */
+        this.ratio = 2;
         this.originShow = 50;
         this.originHide = 130;
         this.amateurShow = 130;
         this.amateurHide = 210;
-        this.bar2Offset = 220;
+        this.bar1Offset = 0;
+        this.bar2Offset = 200;
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 190;
+
+        this.bar1Top = '80vh';
+        this.bar1Height = '15vh';
+        this.originTop = '100vh';
+        this.bar2Top = '160vh';
+        this.bar2Height = '15vh';
+        this.amateurTop = '180vh';
+        this.footerTop = '240vh';
       } else if (window.innerWidth < 768) {
-        /* Desktop device with one column video (small screen) */
+        /* small screen with one column video */
         /* Disable animation on small screen devices */
+        this.ratio = 2;
         this.originShow = -1;
         this.originHide = 1000;
         this.amateurShow = -1;
         this.amateurHide = 1000;
+        this.bar1Offset = 0;
         this.bar2Offset = 700;
 
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 260;
       } else if (window.innerWidth < 1200) {
-        /* Desktop device with two column video (medium screen) */
+        /* medium screen and landscape iPad with two column video */
+        this.ratio = 2;
         this.originShow = 50;
         this.originHide = 250;
         this.amateurShow = 250;
         this.amateurHide = 400;
-        this.bar2Offset = 400;
-
+        this.bar1Offset = 0;
+        this.bar2Offset = 380;
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 280;
+
+        this.bar1Top = '100vh';
+        this.bar1Height = '40vh';
+        this.originTop = '150vh';
+        this.bar2Top = '280vh';
+        this.bar2Height = '40vh';
+        this.amateurTop = '330vh';
+        this.footerTop = '440vh';
+        if (navigator.userAgent.match(/(iPad).*OS\s([\d_]+)/)) {
+          // iOS background-attachment compatibility
+          this.ratio = 1;
+        }
       } else {
         /* Ordinary resolution (large screen) */
-        this.originShow = 80; // rem
+        this.ratio = 2;
+        this.originShow = 80;
         this.originHide = 170;
         this.amateurShow = 190;
         this.amateurHide = 280;
+        this.bar1Offset = 0;
         this.bar2Offset = 220;
-
         this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 190;
+
+        this.bar1Top = '100vh';
+        this.bar1Height = '40vh';
+        this.originTop = '150vh';
+        this.bar2Top = '210vh';
+        this.bar2Height = '40vh';
+        this.amateurTop = '260vh';
+        this.footerTop = '300vh';
       }
     },
     initPage(e) {
@@ -165,7 +217,6 @@ export default {
   mounted() {
     window.addEventListener("scroll", this.handleScroll); //创建滚动监听，页面滚动回调handleScroll方法
     window.addEventListener('resize', this.handleResize);
-    // this.windowHeight = document.documentElement.clientHeight;
     this.handleResize();
     // this.handleScroll(); // this caused bugs in menu
   },
@@ -181,6 +232,7 @@ export default {
 </script>
 
 <style scoped>
+/*vars="{ bar1Top, bar1Height, originTop, bar2Top, bar2Height, amateurTop, footerTop }"*/
 #cover {
   z-index: 998;
   top: 0;
@@ -195,39 +247,47 @@ export default {
 }
 #bar1 {
   background-image: url("./assets/image/bar1.jpg");
-  height: 40rem;
-  top: 100rem;
+  /*height: 40vh;*/
+  /*top: 100vh;*/
+  top: v-bind(bar1Top);
+  height: v-bind(bar1Height);
   border: 5px #000;
 }
 #origin {
   position: absolute;
   z-index: 1;
-  top: 150rem;
+  /*top: 150vh;*/
+  top: v-bind(originTop);
   left: 50%;
   transform: translateX(-50%);
 }
 #bar2 {
   background-image: url("./assets/image/bar2.jpg");
-  height: 40rem;
-  top: 210rem;
+  /*height: 40vh;*/
+  /*top: 210vh;*/
+  top: v-bind(bar2Top);
+  height: v-bind(bar2Height);
   border: 5px #000;
 }
 #amateur {
   position: absolute;
-  top: 260rem;
+  /*top: 260vh;*/
+  top: v-bind(amateurTop);
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
 }
 Footer {
   position: absolute;
-  top: 300rem;
+  /*top: 300vh;*/
+  top: v-bind(footerTop);
   width: 100%;
 }
 .fixed_image {
   position: absolute;
   background: no-repeat fixed center 0;
-  background-size: cover;
+  /*background-size: cover;*/
+  background-size: 100% auto;
   left: 0;
   width: 100%;
   z-index: 1;
@@ -269,21 +329,16 @@ Footer {
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  /* desktop device with 2 column video (medium screen) */
-  #bar2 {
-    height: 50rem;
-    top: 300rem;
-  }
-  #amateur {
-    top: 350rem;
-  }
-  Footer {
-    top: 500rem;
+@media only screen and (max-width: 1200px) and (min-width: 768px) {
+  /* medium screen and landscape iPad with two column video
+  width: [768~1200] */
+  .fixed_image {
+    background-size: 120% auto;
   }
 }
 @media only screen and (max-width: 767px) {
-  /* desktop device with 1 column video (small screen) */
+  /* zooming in screens and small screens with one column video
+  width: [0, 768) */
   #bar2 {
     height: 50rem;
     top: 450rem;
@@ -296,23 +351,9 @@ Footer {
   }
 }
 @media only screen and (min-height:1023px) and (max-width:1025px) {
-  /* iPad */
-  #bar1 {
-    height: 20rem;
-    top: 100rem;
-  }
-  #origin {
-    top: 130rem;
-  }
-  #bar2 {
-    top: 220rem;
-    height: 20rem;
-  }
-  #amateur {
-    top: 250rem;
-  }
-  Footer {
-    top: 330rem;
+  /* Portrait iPad */
+  .fixed_image {
+    background-size: 120% auto;
   }
 }
 @media only screen and (max-width: 429px) and (min-height: 428px) {
@@ -322,15 +363,6 @@ Footer {
   }
   #bar2 {
     display: none;
-  }
-  #origin {
-    top: 70vh;
-  }
-  #amateur {
-    top: 160vh;
-  }
-  Footer {
-    top: 250vh;
   }
 }
 </style>
