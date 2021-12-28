@@ -26,10 +26,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .el-descriptions__title {
-  font-size: 2rem;
+  /* Global style for description font size */
+  font-size: 2vmin;
 }
+</style>
+<style scoped>
 #intro {
   position: absolute;
   z-index: 10;
@@ -237,7 +240,7 @@ export default {
   /* smaller than iPad */
   #intro {
     top: 25vh;
-    height: 50vh;
+    height: 40vh;
     width: 80%;
     transform: translateX(-50%);
     padding: 5vmin 0 0 10vmin;
