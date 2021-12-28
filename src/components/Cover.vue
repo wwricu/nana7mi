@@ -133,13 +133,6 @@ $('.btn-mobile-menu__icon').click(function() {
 /*@import "../assets/css/cover/iconfont.css";*/
 /*@import "../assets/css/cover/onlinewebfonts.css";*/
 
-/* The background is set in App.vue */
-.blog-button {
-  font-size: 0.9em;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-}
-
 /* nav-container has no height after being compiled by Vue.js */
 #nav-container {
   margin: 0 auto;
@@ -148,6 +141,23 @@ $('.btn-mobile-menu__icon').click(function() {
 }
 </style>
 <style>
+/* We have below four styles to override the fonts
+which was override by bootstrap.min.css imported globally in Video.css */
+.panel-title {
+  font-size: 3em !important;
+  font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif !important;
+}
+.panel-subtitle {
+  font-size: 1.4em !important;
+}
+.panel-cover__description {
+  font-size: 1.2em !important;
+}
+.blog-button {
+  font-size: 1.1em !important;
+}
+/* ---- font ---- override ---- end ----*/
+
 .cover_icon {
   margin: -5vmin 0;
   animation: blink 1500ms infinite;
