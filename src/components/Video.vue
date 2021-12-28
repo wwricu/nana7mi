@@ -1,5 +1,6 @@
 <template>
-<div class="video" :class="{'plainIn':ifDisplay===true,'plainOut':ifDisplay===false}">
+<div class="video" :class="{'plainIn':ifDisplay===true,
+                            'plainOut':ifDisplay===false&&activePlayer==null}">
   <div id="title">{{ titleText }}</div>
   <el-divider>
     <el-icon><star-filled/></el-icon>
@@ -13,9 +14,8 @@
         <div class="box" :class="{'disable_animation':i === activePlayer}">
           <iframe :id="'player'+i" v-if="i === activePlayer"
                   :src="linkPrefix + video.bv"
-                  scrolling="no" border="0" frameborder="no"
-                  class="box-content"
-                  framespacing="0" allowfullscreen="false">
+                  class="box-content" border="0"
+                  framespacing="0" allowfullscreen="true">
           </iframe>
           <img :src="'/video_covers/'+video.bv+'.jpg'" v-show="i !== activePlayer" alt="">
           <img src="../assets/image/placeholder.png" class="placeholder" v-show="i === activePlayer" alt="">
@@ -46,7 +46,7 @@ export default {
   props: {
     ifDisplay: Boolean(false),
     titleText: String,
-    videoIndex: Number,
+    videoIndex: null,
   },
   methods: {
     showPlayer(index) {
@@ -68,7 +68,7 @@ export default {
   },
   data() {
     return {
-      linkPrefix: '//player.bilibili.com/player.html?high_quality=1&bvid=',
+      linkPrefix: '//player.bilibili.com/player.html?high_quality=1&as_wide=1&bvid=',
       videoPrefix: 'https://www.bilibili.com/video/',
       activePlayer: Number,
       videoLists: [

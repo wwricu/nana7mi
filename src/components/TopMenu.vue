@@ -3,7 +3,6 @@
         :default-active="1"
         class="el-menu-demo"
         mode="horizontal"
-        @select="handleSelect"
         menu-trigger="click"
         unique-opened
     >
