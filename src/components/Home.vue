@@ -14,7 +14,6 @@
     <el-descriptions-item label-align="right" align="left" label="粉丝勋章">
       <el-tag size="small">脆鲨</el-tag>
     </el-descriptions-item>
-    <el-descriptions-item label-align="right" align="left" label="特技" width="2">鱼人语、可以随时随地睡着、可以睡很久</el-descriptions-item>
   </el-descriptions>
 </template>
 

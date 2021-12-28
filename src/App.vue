@@ -133,8 +133,9 @@ export default {
       }
     },
     initPage(e) {
-      console.log(e.target.className);
-      if (e.target.className.indexOf('navigation') === -1
+      // console.log(e.target.className);
+      if (e.target.className.animVal.indexOf('cover_icon') !== -1
+       || e.target.className.indexOf('navigation') === -1
        && e.target.className.indexOf('blog-button') === -1
        && e.target.className.indexOf('profilepic') === -1) {
         /* click out of links and avatar*/
