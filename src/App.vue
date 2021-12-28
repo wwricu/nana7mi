@@ -22,7 +22,7 @@
          :videoIndex="1"
   ></Video>
   <div v-if="contentInit" id="bar2" class="fixed_image"
-       :style="{'background-position-y':positionY+image3Pos+'rem'}"
+       :style="{'background-position-y':positionY+bar2Offset+'rem'}"
   ></div>
   <el-backtop :visibility-height=-1 @click="deinitPage" @tap="deinitPage"/>
   <Footer v-if="contentInit" ></Footer>
@@ -54,7 +54,7 @@ export default {
       originHide: 160, // rem
       amateurShow: 210, // rem
       amateurHide: 290, // rem
-      image3Pos: 220,
+      bar2Offset: 220,
       hidePlayer: true,
 
       backgroundStyle1: 75, // rem
@@ -82,7 +82,7 @@ export default {
         this.originHide = 1000;
         this.amateurShow = -1;
         this.amateurHide = 1000;
-        this.image3Pos = 270;
+        this.bar2Offset = 270;
 
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = -1; // Enforce style2 background on smartphones
@@ -96,7 +96,7 @@ export default {
         this.originHide = 130;
         this.amateurShow = 130;
         this.amateurHide = 210;
-        this.image3Pos = 220;
+        this.bar2Offset = 220;
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 190;
       } else if (window.innerWidth < 768) {
@@ -106,7 +106,7 @@ export default {
         this.originHide = 1000;
         this.amateurShow = -1;
         this.amateurHide = 1000;
-        this.image3Pos = 700;
+        this.bar2Offset = 700;
 
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 260;
@@ -116,7 +116,7 @@ export default {
         this.originHide = 250;
         this.amateurShow = 250;
         this.amateurHide = 400;
-        this.image3Pos = 400;
+        this.bar2Offset = 400;
 
         // this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 280;
@@ -126,7 +126,7 @@ export default {
         this.originHide = 170;
         this.amateurShow = 190;
         this.amateurHide = 280;
-        this.image3Pos = 220;
+        this.bar2Offset = 220;
 
         this.backgroundStyle1 = 80;
         this.backgroundStyle2 = 190;
