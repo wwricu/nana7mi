@@ -20,7 +20,7 @@
           <el-descriptions column=2 >
             <el-descriptions-item label-align="right" align="left" label="作者">
               <a href="https://space.bilibili.com/20769654" target="_blank">打牙专家&nbsp;&nbsp;</a>
-              <a href="https://space.bilibili.com/20769654" target="_blank">xxxxxx</a>
+              <a href="https://space.bilibili.com/228042796" target="_blank">彩彩Aya</a>
             </el-descriptions-item>
             <el-descriptions-item label-align="right" align="left" label="图片版权">
               <a href="https://space.bilibili.com/1883330" target="_blank">再也不吃柠檬炸鸡&nbsp;&nbsp;</a>
