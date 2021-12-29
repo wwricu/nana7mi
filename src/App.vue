@@ -76,11 +76,12 @@ export default {
       this.scrollTop = (window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop) / this.fontSize; // rem
-      this.clientHeight = document.documentElement.clientHeight / this.fontSize; // visible height
-      this.scrollHeight = Math.floor(document.documentElement.scrollHeight / this.fontSize); // total height
+      this.clientHeight = Math.ceil(document.documentElement.clientHeight / this.fontSize); // visible height
+      this.scrollHeight = Math.floor(document.documentElement.scrollHeight / this.fontSize) - 1; // total height
 
       this.Y = document.getElementById("bar1").offsetTop / this.fontSize;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio;
+      console.log(this.scrollTop, this.clientHeight, this.scrollHeight);
     },
     handleResize() {
       this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin
@@ -222,7 +223,7 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll); //创建滚动监听，页面滚动回调handleScroll方法
+    window.addEventListener("scroll", this.handleScroll);
     window.addEventListener('resize', this.handleResize);
     let ua = navigator.userAgent;
     if (ua.match(/(iPhone\sOS)\s([\d_]+)/)
@@ -265,6 +266,7 @@ export default {
   top: v-bind(bar1Top);
   height: v-bind(bar1Height);
   border: 5px #000;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
 }
 #origin {
   position: absolute;
@@ -281,6 +283,7 @@ export default {
   top: v-bind(bar2Top);
   height: v-bind(bar2Height);
   border: 5px #000;
+  box-shadow: 0 5px 12px 0 rgba(0, 0, 0, .1);
 }
 #amateur {
   position: absolute;

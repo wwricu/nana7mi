@@ -61,6 +61,7 @@ export default {
         /* click out of box */
         this.activePlayer = null;
       }
+      console.log('player', this.activePlayer);
     },
   },
   mounted() {
