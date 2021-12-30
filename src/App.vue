@@ -81,7 +81,7 @@ export default {
 
       this.Y = document.getElementById("bar1").offsetTop / this.fontSize;// * this.ratio;
       this.positionY = this.Y - this.scrollTop * this.ratio;
-      console.log(this.scrollTop, this.clientHeight, this.scrollHeight);
+      // console.log(this.scrollTop, this.clientHeight, this.scrollHeight);
     },
     handleResize() {
       this.fontSize = Math.min(window.innerHeight, window.innerWidth) / 100; // 1vmin

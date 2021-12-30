@@ -61,7 +61,6 @@ export default {
         /* click out of box */
         this.activePlayer = null;
       }
-      console.log('player', this.activePlayer);
     },
   },
   mounted() {
@@ -139,12 +138,10 @@ export default {
 }
 </script>
 
-<style>
-</style>
 <style scoped>
 @import url("../assets/css/reset.css");
 @import url("../assets/css/bootstrap-grid.min.css");
-@import url("../assets/css/font-awesome.min.css");
+/*@import url("../assets/css/font-awesome.min.css");*/
 /* The font-awesome icons cannot be shown unless using unscoped css or @import */
 @import url("../assets/css/video.css");
 </style>
