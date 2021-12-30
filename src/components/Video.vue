@@ -46,13 +46,14 @@ export default {
   props: {
     ifDisplay: Boolean(false),
     titleText: String,
-    videoIndex: null,
+    videoIndex: Number,
   },
   methods: {
     showPlayer(index) {
       this.activePlayer = index;
     },
     handleClick(e) {
+      // console.log(this.activePlayer);
       if (e.target.className.indexOf('title') === -1
        && e.target.className.indexOf('post') === -1
        && e.target.className.indexOf('box') === -1
@@ -70,7 +71,7 @@ export default {
     return {
       linkPrefix: '//player.bilibili.com/player.html?high_quality=1&as_wide=1&bvid=',
       videoPrefix: 'https://www.bilibili.com/video/',
-      activePlayer: Number,
+      activePlayer: null,
       videoLists: [
         [
           {

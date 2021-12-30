@@ -17,7 +17,7 @@
        :style="{'background-position-y':positionY+'rem'}"
   ></div>
   <Video v-if="contentInit" id="amateur"
-         :ifDisplay="(scrollTop>amateurShow && scrollTop+clientHeight<scrollHeight)"
+         :ifDisplay="(scrollTop>amateurShow && (scrollTop+clientHeight<scrollHeight))"
          :titleText="'二创作品'"
          :videoIndex="1"
   ></Video>

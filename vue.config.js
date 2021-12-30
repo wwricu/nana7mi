@@ -1,13 +1,10 @@
 module.exports = {
-    productionSourceMap: false,
+    // productionSourceMap: false,
     configureWebpack: {
         externals: {
-            Vue: 'vue',
-            'vue': 'Vue',
+            // 'vue': 'Vue',
             'jquery': '$',
-            '$': 'jquery',
-            ElementPlus: 'element-plus',
-            'element-plus': 'ElementPlus'
+            // 'element-plus': 'ElementPlus'
         }
     },
 }
