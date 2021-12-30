@@ -169,6 +169,7 @@ export default {
   }
   to {
     opacity: 0;
+    z-index: -999;
   }
 }
 </style>
